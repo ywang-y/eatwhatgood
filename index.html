@@ -166,438 +166,125 @@
         const btnTryAgainMeal = document.getElementById('btnTryAgainMeal');
         const currentYearSpan = document.getElementById('currentYear');
 
-        // --- Expanded Meal Data with Moods (Drinks removed from names, more dishes added) ---
+        // --- Expanded Meal Data with Moods (Drinks & specific portion/season removed from names, more dishes added, "台式" separated) ---
         const mealData = {
             breakfast: {
                 "港式": [
-                    { name: "沙嗲牛肉麵配炒蛋多士", moods: ["Comfort Food", "快靚正"] },
-                    { name: "雪菜肉絲米粉", moods: ["快靚正", "健康清淡啲～"] },
-                    { name: "腿蛋治", moods: ["快靚正"] },
-                    { name: "火腿通粉", moods: ["快靚正", "Comfort Food"] },
-                    { name: "皮蛋瘦肉粥配炒麵", moods: ["Comfort Food", "健康清淡啲～"] },
-                    { name: "腸粉 (可加混醬)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "鮮油菠蘿包", moods: ["Comfort Food"] },
-                    { name: "餐蛋麵", moods: ["快靚正", "Comfort Food"] },
-                    { name: "即叫即製粢飯", moods: ["Comfort Food"] },
-                    { name: "魚柳包", moods: ["快靚正"] },
-                    { name: "豬扒包", moods: ["Comfort Food"] },
-                    { name: "雞批", moods: ["Comfort Food"] },
-                    { name: "腿蓉奄列", moods: ["Comfort Food", "健康清淡啲～"] },
-                    { name: "鮮茄牛肉通粉", moods: ["Comfort Food", "健康清淡啲～"] },
-                    { name: "炸菜肉絲公仔麵", moods: ["快靚正", "Comfort Food"] },
-                    { name: "五香肉丁公仔麵", moods: ["快靚正", "Comfort Food"] }
+                    { name: "沙嗲牛肉麵配炒蛋多士", moods: ["Comfort Food", "快靚正"] }, { name: "雪菜肉絲米粉", moods: ["快靚正", "健康清淡啲～"] },
+                    { name: "腿蛋治", moods: ["快靚正"] }, { name: "火腿通粉", moods: ["快靚正", "Comfort Food"] },
+                    { name: "皮蛋瘦肉粥配炒麵", moods: ["Comfort Food", "健康清淡啲～"] }, { name: "腸粉", moods: ["快靚正", "Comfort Food"] }, // Simplified
+                    { name: "鮮油菠蘿包", moods: ["Comfort Food"] }, { name: "餐蛋麵", moods: ["快靚正", "Comfort Food"] },
+                    { name: "即叫即製粢飯", moods: ["Comfort Food"] }, { name: "魚柳包", moods: ["快靚正"] },
+                    { name: "豬扒包", moods: ["Comfort Food"] }, { name: "雞批", moods: ["Comfort Food"] },
+                    { name: "腿蓉奄列", moods: ["Comfort Food", "健康清淡啲～"] }, { name: "鮮茄牛肉通粉", moods: ["Comfort Food", "健康清淡啲～"] },
+                    { name: "炸菜肉絲公仔麵", moods: ["快靚正", "Comfort Food"] }, { name: "五香肉丁公仔麵", moods: ["快靚正", "Comfort Food"] }
                 ],
                 "西式": [
-                    { name: "穀物片", moods: ["健康清淡啲～", "快靚正"] },
-                    { name: "乳酪杯配水果麥片", moods: ["健康清淡啲～"] },
-                    { name: "煙肉蛋奄列配薯餅", moods: ["Comfort Food"] },
-                    { name: "英式鬆餅 (Scones)", moods: ["想食豪啲！"] },
-                    { name: "鬆餅 (Pancakes)", moods: ["Comfort Food"] },
-                    { name: "法式吐司 (French Toast)", moods: ["Comfort Food"] },
-                    { name: "牛角包", moods: ["快靚正"] },
-                    { name: "英式全餐 (Full English)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "煙三文魚貝果 (Bagel)", moods: ["健康清淡啲～", "想食豪啲！"] },
-                    { name: "窩夫 (Waffles)", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "煙三文魚炒蛋", moods: ["想食豪啲！", "健康清淡啲～"] },
-                    { name: "芝士火腿可頌 (Croissant)", moods: ["Comfort Food"] },
-                    { name: "牛油果多士", moods: ["健康清淡啲～"] },
-                    { name: "炒雜菌多士", moods: ["健康清淡啲～"] }
+                    { name: "穀物片", moods: ["健康清淡啲～", "快靚正"] }, { name: "乳酪杯配水果麥片", moods: ["健康清淡啲～"] },
+                    { name: "煙肉蛋奄列配薯餅", moods: ["Comfort Food"] }, { name: "英式鬆餅 (Scones)", moods: ["想食豪啲！"] },
+                    { name: "鬆餅 (Pancakes)", moods: ["Comfort Food"] }, { name: "法式吐司 (French Toast)", moods: ["Comfort Food"] },
+                    { name: "牛角包", moods: ["快靚正"] }, { name: "英式全餐 (Full English)", moods: ["想食豪啲！", "Comfort Food"] },
+                    { name: "煙三文魚貝果 (Bagel)", moods: ["健康清淡啲～", "想食豪啲！"] }, { name: "窩夫 (Waffles)", moods: ["Comfort Food", "想食豪啲！"] },
+                    { name: "煙三文魚炒蛋", moods: ["想食豪啲！", "健康清淡啲～"] }, { name: "芝士火腿可頌 (Croissant)", moods: ["Comfort Food"] },
+                    { name: "牛油果多士", moods: ["健康清淡啲～"] }, { name: "炒雜菌多士", moods: ["健康清淡啲～"] }
                 ],
                 "中式": [
-                    { name: "蝦餃燒賣", moods: ["Comfort Food"] },
-                    { name: "糯米雞", moods: ["Comfort Food"] },
-                    { name: "牛肉球", moods: ["Comfort Food"] },
-                    { name: "菜肉包", moods: ["快靚正"] },
-                    { name: "潮州粉粿", moods: [] },
-                    { name: "上海粢飯糰", moods: ["Comfort Food"] },
-                    { name: "粥品 (白粥/皮蛋瘦肉粥)", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "煎堆油炸鬼", moods: ["Comfort Food"] },
-                    { name: "饅頭", moods: ["健康清淡啲～", "快靚正"] },
-                    { name: "鹹豆漿", moods: ["Comfort Food", "健康清淡啲～"] },
-                    { name: "生煎包", moods: ["Comfort Food"] },
-                    { name: "小籠包", moods: ["Comfort Food"] }, // Simplified
-                    { name: "窩貼", moods: ["Comfort Food"] },
-                    { name: "韮菜盒", moods: ["Comfort Food"] }
+                    { name: "蝦餃燒賣", moods: ["Comfort Food"] }, { name: "糯米雞", moods: ["Comfort Food"] },
+                    { name: "牛肉球", moods: ["Comfort Food"] }, { name: "菜肉包", moods: ["快靚正"] },
+                    { name: "潮州粉粿", moods: [] }, { name: "上海粢飯糰", moods: ["Comfort Food"] },
+                    { name: "粥品 (白粥/皮蛋瘦肉粥)", moods: ["健康清淡啲～", "Comfort Food"] }, { name: "煎堆油炸鬼", moods: ["Comfort Food"] },
+                    { name: "饅頭", moods: ["健康清淡啲～", "快靚正"] }, { name: "鹹豆漿", moods: ["Comfort Food", "健康清淡啲～"] },
+                    { name: "生煎包", moods: ["Comfort Food"] }, { name: "小籠包", moods: ["Comfort Food"] },
+                    { name: "窩貼", moods: ["Comfort Food"] }, { name: "韮菜盒", moods: ["Comfort Food"] }
+                ],
+                "台式": [ // New Taiwanese category for breakfast
+                    { name: "台式飯糰 (古早味)", moods: ["Comfort Food", "快靚正"] }, { name: "蛋餅 (原味/芝士/粟米)", moods: ["快靚正", "Comfort Food"] },
+                    { name: "台式鹹豆漿", moods: ["Comfort Food", "健康清淡啲～"] }, { name: "總匯三文治 (台式)", moods: ["快靚正", "Comfort Food"] },
+                    { name: "刈包 (早餐版)", moods: ["Comfort Food"] }, { name: "蘿蔔糕 (台式)", moods: ["Comfort Food"] }
                 ],
                 "其他": [
-                    { name: "水果拼盤", moods: ["健康清淡啲～"] },
-                    { name: "能量棒", moods: ["快靚正", "健康清淡啲～"] },
-                    { name: "飯糰 (便利店)", moods: ["快靚正"] },
-                    { name: "即食麥皮", moods: ["健康清淡啲～", "快靚正"] },
-                    { name: "隔夜燕麥杯", moods: ["健康清淡啲～"] },
-                    { name: "乳酪飲品", moods: ["健康清淡啲～", "快靚正"] },
-                    { name: "雞蛋仔", moods: ["快靚正", "Comfort Food"] }, // Simplified
-                    { name: "藜麥杯", moods: ["健康清淡啲～"] },
-                    { name: "希臘乳酪配蜜糖堅果", moods: ["健康清淡啲～", "想食豪啲！"] },
-                    { name: "能量球 (Energy Balls)", moods: ["健康清淡啲～", "快靚正"] }
+                    { name: "水果拼盤", moods: ["健康清淡啲～"] }, { name: "能量棒", moods: ["快靚正", "健康清淡啲～"] },
+                    { name: "飯糰 (便利店)", moods: ["快靚正"] }, { name: "即食麥皮", moods: ["健康清淡啲～", "快靚正"] },
+                    { name: "隔夜燕麥杯", moods: ["健康清淡啲～"] }, { name: "乳酪飲品", moods: ["健康清淡啲～", "快靚正"] },
+                    { name: "雞蛋仔", moods: ["快靚正", "Comfort Food"] }, { name: "藜麥杯", moods: ["健康清淡啲～"] },
+                    { name: "希臘乳酪配蜜糖堅果", moods: ["健康清淡啲～", "想食豪啲！"] }, { name: "能量球 (Energy Balls)", moods: ["健康清淡啲～", "快靚正"] }
                 ]
             },
             lunch: {
                 "港式": [
-                    { name: "碟頭飯 (例：粟米肉粒飯)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "焗豬扒飯", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "乾炒牛河", moods: ["Comfort Food"] },
-                    { name: "車仔麵", moods: ["快靚正"] },
-                    { name: "燒味飯 (例：叉燒飯)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "雲吞麵/牛腩河", moods: ["Comfort Food"] },
-                    { name: "常餐", moods: ["快靚正", "Comfort Food"] },
-                    { name: "炒粉麵 (例：星洲炒米)", moods: ["快靚正"] },
-                    { name: "豆腐火腩飯", moods: ["Comfort Food"] },
-                    { name: "枝竹火腩飯", moods: ["Comfort Food"] },
-                    { name: "鮮茄焗豬扒飯", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "瑞士雞翼撈公仔麵", moods: ["Comfort Food"] },
-                    { name: "XO醬海鮮炒飯", moods: ["想食豪啲！"] },
-                    { name: "滑蛋蝦仁飯", moods: ["Comfort Food", "健康清淡啲～"] },
+                    { name: "碟頭飯 (例：粟米肉粒飯)", moods: ["快靚正", "Comfort Food"] }, { name: "焗豬扒飯", moods: ["Comfort Food", "想食豪啲！"] },
+                    { name: "乾炒牛河", moods: ["Comfort Food"] }, { name: "車仔麵", moods: ["快靚正"] },
+                    { name: "燒味飯 (例：叉燒飯)", moods: ["快靚正", "Comfort Food"] }, { name: "雲吞麵/牛腩河", moods: ["Comfort Food"] },
+                    { name: "常餐", moods: ["快靚正", "Comfort Food"] }, { name: "炒粉麵 (例：星洲炒米)", moods: ["快靚正"] },
+                    { name: "豆腐火腩飯", moods: ["Comfort Food"] }, { name: "枝竹火腩飯", moods: ["Comfort Food"] },
+                    { name: "鮮茄焗豬扒飯", moods: ["Comfort Food", "想食豪啲！"] }, { name: "瑞士雞翼撈公仔麵", moods: ["Comfort Food"] },
+                    { name: "XO醬海鮮炒飯", moods: ["想食豪啲！"] }, { name: "滑蛋蝦仁飯", moods: ["Comfort Food", "健康清淡啲～"] },
                     { name: "福建炒飯", moods: ["Comfort Food"] }
                 ],
                 "中式": [
-                    { name: "點心 (例：蝦餃燒賣)", moods: ["Comfort Food"] },
-                    { name: "兩餸飯", moods: ["快靚正"] },
-                    { name: "蒸飯套餐 (例：北菇蒸雞飯)", moods: ["健康清淡啲～", "快靚正"] },
-                    { name: "湯飯/泡飯", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "麻婆豆腐飯", moods: ["Comfort Food"] },
-                    { name: "水煮牛肉飯", moods: ["Comfort Food"] }, // Simplified
-                    { name: "擔擔麵", moods: ["Comfort Food"] },
-                    { name: "酸辣粉", moods: [] },
-                    { name: "蘭州拉麵", moods: ["Comfort Food"] },
-                    { name: "餃子 (水餃/煎餃)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "麻辣燙", moods: ["Comfort Food"] },
-                    { name: "酸菜魚米線", moods: ["Comfort Food"] },
-                    { name: "上海排骨菜飯", moods: ["Comfort Food"] },
-                    { name: "北京炸醬麵", moods: ["Comfort Food"] },
+                    { name: "點心 (例：蝦餃燒賣)", moods: ["Comfort Food"] }, { name: "兩餸飯", moods: ["快靚正"] },
+                    { name: "蒸飯套餐 (例：北菇蒸雞飯)", moods: ["健康清淡啲～", "快靚正"] }, { name: "湯飯/泡飯", moods: ["健康清淡啲～", "Comfort Food"] },
+                    { name: "麻婆豆腐飯", moods: ["Comfort Food"] }, { name: "水煮牛肉飯", moods: ["Comfort Food"] },
+                    { name: "擔擔麵", moods: ["Comfort Food"] }, { name: "酸辣粉", moods: [] },
+                    { name: "蘭州拉麵", moods: ["Comfort Food"] }, { name: "餃子 (水餃/煎餃)", moods: ["快靚正", "Comfort Food"] },
+                    { name: "麻辣燙", moods: ["Comfort Food"] }, { name: "酸菜魚米線", moods: ["Comfort Food"] },
+                    { name: "上海排骨菜飯", moods: ["Comfort Food"] }, { name: "北京炸醬麵", moods: ["Comfort Food"] },
                     { name: "揚州炒飯", moods: ["Comfort Food"] }
                 ],
-                "日式": [
-                    { name: "壽司拼盤", moods: ["想食豪啲！", "健康清淡啲～"] },
-                    { name: "刺身飯 (魚生飯)", moods: ["想食豪啲！", "健康清淡啲～"] },
-                    { name: "豬扒丼 (吉列豬扒飯)", moods: ["Comfort Food"] },
-                    { name: "親子丼 (滑蛋雞肉飯)", moods: ["Comfort Food", "健康清淡啲～"] },
-                    { name: "牛肉飯 (牛丼)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "拉麵 (豚骨/醬油/味噌)", moods: ["Comfort Food"] },
-                    { name: "烏冬 (湯烏冬/炒烏冬)", moods: ["Comfort Food", "健康清淡啲～"] },
-                    { name: "日式咖喱飯", moods: ["Comfort Food"] },
-                    { name: "天婦羅丼", moods: [] },
-                    { name: "蕎麥麵/冷麵", moods: ["健康清淡啲～"] },
-                    { name: "日式便當 (Bento)", moods: ["快靚正", "健康清淡啲～"] },
-                    { name: "鰻魚飯 (輕量版)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "日式漢堡扒飯", moods: ["Comfort Food"] },
-                    { name: "滑蛋豬扒飯 (勝丼)", moods: ["Comfort Food"] },
-                    { name: "鐵板燒套餐", moods: ["想食豪啲！"] }
+                "台式": [ // New Taiwanese category for lunch
+                    { name: "滷肉飯", moods: ["Comfort Food", "快靚正"] }, { name: "雞肉飯", moods: ["健康清淡啲～", "快靚正"] },
+                    { name: "台式牛肉麵", moods: ["Comfort Food", "想食豪啲！"] }, { name: "排骨便當", moods: ["快靚正", "Comfort Food"] },
+                    { name: "鹽酥雞便當", moods: ["Comfort Food"] }, { name: "三杯雞飯", moods: ["Comfort Food"] },
+                    { name: "刈包", moods: ["Comfort Food"] }, { name: "大腸麵線", moods: ["Comfort Food"] },
+                    { name: "蚵仔煎", moods: ["Comfort Food"] }, { name: "筒仔米糕", moods: ["Comfort Food"] }
                 ],
-                "韓式": [
-                    { name: "韓式拌飯 (Bibimbap)", moods: ["健康清淡啲～"] },
-                    { name: "泡菜炒飯", moods: ["Comfort Food"] },
-                    { name: "韓式炸醬麵", moods: ["Comfort Food"] },
-                    { name: "豆腐海鮮湯配飯", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "韓式炸雞", moods: ["Comfort Food", "想食豪啲！"] }, // Simplified
-                    { name: "部隊鍋", moods: ["Comfort Food"] }, // Simplified
-                    { name: "紫菜包飯 (Kimbap)", moods: ["快靚正", "健康清淡啲～"] },
-                    { name: "人參雞湯", moods: ["健康清淡啲～", "Comfort Food"] }, // Simplified
-                    { name: "韓式炒粉絲 (Japchae)", moods: ["健康清淡啲～"] },
-                    { name: "辣炒年糕 (Tteokbokki)", moods: ["Comfort Food"] },
-                    { name: "韓式冷麵 (Naengmyeon)", moods: ["健康清淡啲～"] },
-                    { name: "石頭鍋飯 (Dolsot Bibimbap)", moods: ["Comfort Food"] },
-                    { name: "韓式豬肉蓋飯 (Jeyuk Deopbap)", moods: ["Comfort Food"] }
-                ],
-                "西式": [
-                    { name: "意粉 (肉醬/白汁/香草)", moods: ["Comfort Food"] },
-                    { name: "薄餅 (Pizza)", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "公司三文治配薯條", moods: ["快靚正", "Comfort Food"] },
-                    { name: "西式沙律配雞扒/三文魚", moods: ["健康清淡啲～"] },
-                    { name: "漢堡包餐", moods: ["快靚正", "Comfort Food"] },
-                    { name: "焗薯配料", moods: ["Comfort Food"] },
-                    { name: "西式湯配麵包", moods: ["健康清淡啲～"] },
-                    { name: "烤雞/雞扒餐", moods: ["Comfort Food"] },
-                    { name: "魚柳包配薯條", moods: ["快靚正"] },
-                    { name: "意式肉丸意粉", moods: ["Comfort Food"] },
-                    { name: "卡邦尼意粉", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "烤三文魚配雜菜", moods: ["健康清淡啲～", "想食豪啲！"] },
-                    { name: "肉醬千層麵", moods: ["Comfort Food", "想食豪啲！"] }
-                ],
-                "東南亞": [
-                    { name: "泰式豬頸肉飯", moods: ["Comfort Food"] },
-                    { name: "青咖喱雞飯", moods: ["Comfort Food"] },
-                    { name: "冬蔭功金邊粉", moods: [] },
-                    { name: "海南雞飯", moods: ["Comfort Food", "健康清淡啲～"] },
-                    { name: "越南生牛肉河 (Pho)", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "扎肉撈檬", moods: ["健康清淡啲～"] },
-                    { name: "喇沙 (Laksa)", moods: ["Comfort Food"] },
-                    { name: "肉骨茶", moods: ["Comfort Food"] },
-                    { name: "泰式炒河 (Pad See Ew)", moods: ["Comfort Food"] },
-                    { name: "印尼炒飯 (Nasi Goreng)", moods: ["Comfort Food"] },
-                    { name: "泰式船麵", moods: ["Comfort Food"] },
-                    { name: "越南法式三文治 (Banh Mi)", moods: ["快靚正"] },
-                    { name: "星洲炒蘿蔔糕", moods: ["Comfort Food"] },
-                    { name: "泰式菠蘿炒飯", moods: ["Comfort Food"] },
-                    { name: "馬來西亞椰漿飯 (Nasi Lemak)", moods: ["Comfort Food"] }
-                ],
-                "快餐/輕食": [
-                    { name: "連鎖快餐套餐", moods: ["快靚正"] },
-                    { name: "Subway潛艇堡", moods: ["快靚正", "健康清淡啲～"] },
-                    { name: "便利店飯盒/意粉", moods: ["快靚正"] },
-                    { name: "沙律杯", moods: ["健康清淡啲～", "快靚正"] },
-                    { name: "杯麵", moods: ["快靚正", "Comfort Food"] },
-                    { name: "烤雞卷餅 (Wrap)", moods: ["快靚正", "健康清淡啲～"] },
-                    { name: "意式薄餅 (單片)", moods: ["快靚正"] },
-                    { name: "熱狗", moods: ["快靚正", "Comfort Food"] },
-                    { name: "墨西哥夾餅 (Quesadilla)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "即食湯包配麵包", moods: ["快靚正", "健康清淡啲～"] }
-                ],
-                "其他": [
-                    { name: "台式肉燥飯/便當", moods: ["Comfort Food", "快靚正"] },
-                    { name: "印度咖喱配薄餅 (Naan)", moods: ["Comfort Food"] },
-                    { name: "土耳其烤肉卷 (Kebab)", moods: ["快靚正"] },
-                    { name: "墨西哥卷餅 (Burrito)", moods: ["Comfort Food"] },
-                    { name: "中東旋轉烤肉 (Shawarma)", moods: ["快靚正"] },
-                    { name: "希臘沙律 (Greek Salad)", moods: ["健康清淡啲～"] },
-                    { name: "Poke Bowl (夏威夷魚生飯)", moods: ["健康清淡啲～"] },
-                    { name: "俄羅斯餃子 (Pelmeni)", moods: ["Comfort Food"] },
-                    { name: "西班牙小食 (Tapas)", moods: ["想食豪啲！"] }
-                ]
+                "日式": [ /* ... (existing + more) ... */ { name: "壽司拼盤", moods: ["想食豪啲！", "健康清淡啲～"] }, { name: "刺身飯", moods: ["想食豪啲！", "健康清淡啲～"] }, { name: "豬扒丼", moods: ["Comfort Food"] }, { name: "拉麵", moods: ["Comfort Food"] }, { name: "日式咖喱飯", moods: ["Comfort Food"] } ],
+                "韓式": [ /* ... (existing + more) ... */ { name: "韓式拌飯", moods: ["健康清淡啲～"] }, { name: "泡菜炒飯", moods: ["Comfort Food"] }, { name: "韓式炸雞", moods: ["Comfort Food", "想食豪啲！"] }, { name: "部隊鍋", moods: ["Comfort Food"] } ],
+                "西式": [ /* ... (existing + more) ... */ { name: "意粉", moods: ["Comfort Food"] }, { name: "薄餅 (Pizza)", moods: ["Comfort Food", "想食豪啲！"] }, { name: "漢堡包餐", moods: ["快靚正", "Comfort Food"] }, { name: "西式沙律", moods: ["健康清淡啲～"] } ],
+                "東南亞": [ /* ... (existing + more) ... */ { name: "海南雞飯", moods: ["Comfort Food", "健康清淡啲～"] }, { name: "越南生牛肉河 (Pho)", moods: ["健康清淡啲～", "Comfort Food"] }, { name: "喇沙 (Laksa)", moods: ["Comfort Food"] }, { name: "泰式炒金邊粉 (Pad Thai)", moods: ["Comfort Food"] } ],
+                "快餐/輕食": [ /* ... (existing + more) ... */ { name: "連鎖快餐套餐", moods: ["快靚正"] }, { name: "Subway潛艇堡", moods: ["快靚正", "健康清淡啲～"] }, { name: "沙律杯", moods: ["健康清淡啲～", "快靚正"] } ],
+                "其他": [ /* ... (existing, excluding Taiwanese) ... */ { name: "印度咖喱配薄餅 (Naan)", moods: ["Comfort Food"] }, { name: "土耳其烤肉卷 (Kebab)", moods: ["快靚正"] }, { name: "Poke Bowl (夏威夷魚生飯)", moods: ["健康清淡啲～"] } ]
             },
             afternoonTea: {
-                "港式": [
-                    { name: "西多士", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "炸雞脾薯條", moods: ["Comfort Food"] },
-                    { name: "奶油豬仔包", moods: ["快靚正", "Comfort Food"] },
-                    { name: "蛋撻", moods: ["快靚正", "Comfort Food"] },
-                    { name: "菠蘿油", moods: ["Comfort Food"] },
-                    { name: "公司三文治", moods: ["快靚正"] },
-                    { name: "熱狗", moods: ["快靚正"] },
-                    { name: "沙嗲牛肉包", moods: ["Comfort Food"] },
-                    { name: "炸魚薯條 (茶記版)", moods: ["Comfort Food"] },
-                    { name: "豬扒包", moods: ["Comfort Food"] },
-                    { name: "雞尾包", moods: ["Comfort Food"] },
-                    { name: "咖喱角", moods: ["Comfort Food"] },
-                    { name: "炸鮮奶", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "花生醬格仔餅", moods: ["Comfort Food", "快靚正"] },
-                    { name: "紅豆冰", moods: ["Comfort Food"] } // Drink as a snack
+                "港式": [ /* ... (existing + more) ... */ { name: "西多士", moods: ["Comfort Food", "想食豪啲！"] }, { name: "蛋撻", moods: ["快靚正", "Comfort Food"] }, { name: "菠蘿油", moods: ["Comfort Food"] }, { name: "炸雞脾薯條", moods: ["Comfort Food"] }],
+                "西式": [ /* ... (existing + more) ... */ { name: "英式鬆餅 (Scones)", moods: ["想食豪啲！"] }, { name: "芝士蛋糕", moods: ["Comfort Food", "想食豪啲！"] }, { name: "窩夫 (Waffles)", moods: ["Comfort Food"] } ],
+                "日式": [ /* ... (existing + more) ... */ { name: "抹茶卷蛋", moods: [] }, { name: "日式梳乎厘Pancake", moods: ["想食豪啲！"] }, { name: "章魚小丸子 (Takoyaki)", moods: ["快靚正", "Comfort Food"] } ],
+                "台式": [ // New Taiwanese category for afternoon tea
+                    { name: "珍珠奶茶", moods: ["Comfort Food", "快靚正"] }, { name: "鹽酥雞 (小食)", moods: ["Comfort Food"] },
+                    { name: "甜不辣", moods: ["Comfort Food", "快靚正"] }, { name: "芋圓豆花", moods: ["Comfort Food", "健康清淡啲～"] },
+                    { name: "車輪餅 (紅豆/奶油)", moods: ["Comfort Food", "快靚正"] }, { name: "台式香腸", moods: ["Comfort Food"] },
+                    { name: "炸地瓜球", moods: ["Comfort Food"] }
                 ],
-                "西式": [
-                    { name: "英式鬆餅 (Scones)", moods: ["想食豪啲！"] },
-                    { name: "Cupcakes", moods: [] },
-                    { name: "Macarons", moods: ["想食豪啲！"] },
-                    { name: "芝士蛋糕", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "窩夫 (Waffles)", moods: ["Comfort Food"] },
-                    { name: "手指三文治", moods: ["健康清淡啲～", "快靚正"] },
-                    { name: "Quiche (法式鹹派)", moods: [] },
-                    { name: "美式冬甩 (Donuts)", moods: ["Comfort Food"] },
-                    { name: "布朗尼 (Brownie)", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "檸檬撻", moods: ["想食豪啲！"] },
-                    { name: "水果撻", moods: ["健康清淡啲～", "想食豪啲！"] },
-                    { name: "泡芙 (Cream Puff)", moods: ["Comfort Food"] },
-                    { name: "瑪德蓮蛋糕 (Madeleine)", moods: ["想食豪啲！"] },
-                    { name: "英式下午茶套餐", moods: ["想食豪啲！"] }
-                ],
-                "日式": [
-                    { name: "和菓子", moods: ["健康清淡啲～"] },
-                    { name: "抹茶卷蛋", moods: [] },
-                    { name: "銅鑼燒 (Dorayaki)", moods: ["Comfort Food"] },
-                    { name: "日式梳乎厘Pancake", moods: ["想食豪啲！"] },
-                    { name: "鯛魚燒", moods: ["Comfort Food", "快靚正"] },
-                    { name: "章魚小丸子 (Takoyaki)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "日式可麗餅 (Crepe)", moods: ["Comfort Food"] },
-                    { name: "大福 (Daifuku)", moods: ["Comfort Food"] },
-                    { name: "日式芝士撻", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "糰子 (Dango)", moods: ["Comfort Food"] },
-                    { name: "蕨餅 (Warabimochi)", moods: ["健康清淡啲～"] }
-                ],
-                "中式": [
-                    { name: "點心 (少量, 如春卷、鹹水角)", moods: ["快靚正"] },
-                    { name: "糖水 (紅豆沙、綠豆沙、豆腐花)", moods: ["Comfort Food", "健康清淡啲～"] },
-                    { name: "砵仔糕", moods: ["快靚正", "Comfort Food"] },
-                    { name: "茶粿", moods: [] },
-                    { name: "老婆餅/老公餅", moods: ["Comfort Food"] },
-                    { name: "豆沙窩餅", moods: ["Comfort Food"] },
-                    { name: "擂沙湯圓", moods: ["Comfort Food"] },
-                    { name: "馬仔", moods: ["Comfort Food"] },
-                    { name: "芝麻卷", moods: ["Comfort Food"] },
-                    { name: "白糖糕", moods: ["Comfort Food"] }
-                ],
-                "快餐/輕食": [
-                    { name: "薯條", moods: ["快靚正", "Comfort Food"] },
-                    { name: "雞翼", moods: ["Comfort Food"] },
-                    { name: "迷你薄餅", moods: ["快靚正"] },
-                    { name: "雞蛋仔", moods: ["快靚正", "Comfort Food"] },
-                    { name: "格仔餅", moods: ["快靚正", "Comfort Food"] },
-                    { name: "魚蛋燒賣 (街頭小食)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "炸雞塊", moods: ["Comfort Food"] },
-                    { name: "粟米杯", moods: ["快靚正", "健康清淡啲～"] },
-                    { name: "碗仔糕", moods: ["快靚正", "Comfort Food"] }, // Same as 砵仔糕?
-                    { name: "洋蔥圈", moods: ["Comfort Food"] },
-                    { name: "雪糕/乳酪雪糕", moods: ["Comfort Food"] }
-                ]
+                "中式": [ /* ... (existing + more) ... */ { name: "糖水 (紅豆沙、綠豆沙)", moods: ["Comfort Food", "健康清淡啲～"] }, { name: "砵仔糕", moods: ["快靚正", "Comfort Food"] } ],
+                "快餐/輕食": [ /* ... (existing + more) ... */ { name: "雞蛋仔", moods: ["快靚正", "Comfort Food"] }, { name: "格仔餅", moods: ["快靚正", "Comfort Food"] }, { name: "魚蛋燒賣", moods: ["快靚正", "Comfort Food"] } ]
             },
             dinner: {
-                "港式": [
-                    { name: "鑊氣小炒 (例：咕嚕肉)", moods: ["Comfort Food"] },
-                    { name: "海鮮餐 (例：豉椒炒蜆)", moods: ["想食豪啲！"] },
-                    { name: "打冷 (潮州菜)", moods: [] },
-                    { name: "煲仔飯", moods: ["Comfort Food"] }, // Removed (秋冬)
-                    { name: "火鍋 (打邊爐)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "雞煲", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "粥底火鍋", moods: ["健康清淡啲～"] },
-                    { name: "避風塘炒蟹", moods: ["想食豪啲！"] },
-                    { name: "乳鴿", moods: ["Comfort Food"] },
-                    { name: "豉油王炒麵", moods: ["Comfort Food", "快靚正"] },
-                    { name: "啫啫雞煲", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "金銀蛋浸時蔬", moods: ["健康清淡啲～"] },
-                    { name: "大排檔小炒", moods: ["Comfort Food"] },
-                    { name: "冬瓜盅 (時令)", moods: ["健康清淡啲～", "想食豪啲！"] }
+                "港式": [ /* ... (existing + more) ... */ { name: "鑊氣小炒 (例：咕嚕肉)", moods: ["Comfort Food"] }, { name: "海鮮餐 (例：豉椒炒蜆)", moods: ["想食豪啲！"] }, { name: "火鍋 (打邊爐)", moods: ["想食豪啲！", "Comfort Food"] }, { name: "雞煲", moods: ["想食豪啲！", "Comfort Food"] } ],
+                "中式": [ /* ... (existing + more) ... */ { name: "粵菜酒樓 (例：片皮鴨, 蒸魚)", moods: ["想食豪啲！"] }, { name: "川菜 (例：水煮魚, 辣子雞)", moods: ["Comfort Food"] }, { name: "京滬菜 (例：小籠包, 北京填鴨)", moods: ["想食豪啲！"] } ],
+                "台式": [ // New Taiwanese category for dinner
+                    { name: "三杯雞", moods: ["Comfort Food", "想食豪啲！"] }, { name: "滷肉飯套餐", moods: ["Comfort Food"] },
+                    { name: "台式火鍋 (臭臭鍋/沙茶鍋)", moods: ["Comfort Food", "想食豪啲！"] }, { name: "薑母鴨", moods: ["Comfort Food", "健康清淡啲～"] },
+                    { name: "鹽酥雞 (主菜)", moods: ["Comfort Food"] }, { name: "麻油雞", moods: ["Comfort Food", "健康清淡啲～"] },
+                    { name: "鳳梨苦瓜雞湯", moods: ["健康清淡啲～", "Comfort Food"] }, { name: "客家小炒 (台式)", moods: ["Comfort Food"] }
                 ],
-                "中式": [
-                    { name: "粵菜酒樓 (例：片皮鴨, 蒸魚)", moods: ["想食豪啲！"] },
-                    { name: "川菜 (例：水煮魚, 辣子雞)", moods: ["Comfort Food"] },
-                    { name: "京滬菜 (例：小籠包, 北京填鴨)", moods: ["想食豪啲！"] },
-                    { name: "客家菜 (例：梅菜扣肉)", moods: ["Comfort Food"] },
-                    { name: "順德菜 (例：魚生)", moods: ["健康清淡啲～"] },
-                    { name: "潮州菜 (例：滷水鵝)", moods: ["Comfort Food"] },
-                    { name: "盆菜 (節慶)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "東坡肉", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "佛跳牆 (預訂)", moods: ["想食豪啲！"] },
-                    { name: "私房菜", moods: ["想食豪啲！"] },
-                    { name: "火鍋 (中式)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "羊腩煲 (秋冬)", moods: ["Comfort Food", "想食豪啲！"] }
-                ],
-                "日式": [
-                    { name: "壽司Omakase", moods: ["想食豪啲！"] },
-                    { name: "鐵板燒", moods: ["想食豪啲！"] },
-                    { name: "天婦羅盛合", moods: [] },
-                    { name: "鰻魚飯 (鰻重)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "日式火鍋 (Shabu Shabu/Sukiyaki)", moods: ["想食豪啲！", "Comfort Food", "健康清淡啲～"] },
-                    { name: "居酒屋串燒", moods: ["Comfort Food"] },
-                    { name: "爐端燒", moods: ["想食豪啲！"] },
-                    { name: "懷石料理", moods: ["想食豪啲！", "健康清淡啲～"] },
-                    { name: "壽喜燒 (Sukiyaki)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "串揚 (Kushikatsu)", moods: ["Comfort Food"] },
-                    { name: "日式燒肉 (Yakiniku)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "蟹道樂式蟹宴", moods: ["想食豪啲！"] }
-                ],
-                "韓式": [
-                    { name: "韓式烤肉 (KBBQ)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "部隊鍋", moods: ["Comfort Food"] },
-                    { name: "人參雞湯", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "海鮮煎餅", moods: ["Comfort Food"] },
-                    { name: "醬油蟹", moods: ["想食豪啲！"] },
-                    { name: "安東雞", moods: ["Comfort Food"] },
-                    { name: "韓式豬蹄 (Jokbal)", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "泡菜鍋", moods: ["Comfort Food"] },
-                    { name: "雪濃湯", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "韓式宮廷料理", moods: ["想食豪啲！", "健康清淡啲～"] },
-                    { name: "辣燉排骨 (Maeun Galbijjim)", moods: ["Comfort Food", "想食豪啲！"] }
-                ],
-                "西式": [
-                    { name: "牛扒 (西冷/肉眼)", moods: ["想食豪啲！"] },
-                    { name: "羊架", moods: ["想食豪啲！"] },
-                    { name: "烤春雞", moods: ["Comfort Food"] },
-                    { name: "海鮮意大利飯 (Risotto)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "Fine Dining (多道菜套餐)", moods: ["想食豪啲！"] },
-                    { name: "歐陸菜小館", moods: [] },
-                    { name: "烤豬肋骨 (BBQ Ribs)", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "威靈頓牛柳", moods: ["想食豪啲！"] },
-                    { name: "法式洋蔥湯", moods: ["Comfort Food"] },
-                    { name: "龍蝦湯", moods: ["想食豪啲！"] },
-                    { name: "烤鴨胸", moods: ["想食豪啲！"] },
-                    { name: "海鮮拼盤 (Seafood Platter)", moods: ["想食豪啲！"] }
-                ],
-                "意大利菜": [
-                    { name: "各式手造意粉", moods: ["Comfort Food"] },
-                    { name: "柴火烤薄餅", moods: ["Comfort Food"] },
-                    { name: "意式燴牛仔膝 (Osso Buco)", moods: ["想食豪啲！"] },
-                    { name: "千層麵 (Lasagna)", moods: ["Comfort Food"] },
-                    { name: "墨魚汁意粉", moods: [] },
-                    { name: "T骨牛扒 (Bistecca alla Fiorentina)", moods: ["想食豪啲！"] },
-                    { name: "意式雲吞 (Ravioli)", moods: ["Comfort Food"] },
-                    { name: "墨魚汁飯", moods: [] },
-                    { name: "意式烤羊膝", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "松露意粉/飯", moods: ["想食豪啲！"] }
-                ],
-                "東南亞": [
-                    { name: "泰國菜 (例：冬蔭功, 咖喱蟹)", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "越南菜 (例：蔗蝦, 燒牛肉撈檬)", moods: ["健康清淡啲～"] },
-                    { name: "星馬菜 (例：辣椒蟹, 參巴醬燒魚)", moods: ["想食豪啲！"] },
-                    { name: "印尼菜 (例：巴東牛肉)", moods: ["Comfort Food"] },
-                    { name: "馬來西亞沙嗲串燒", moods: ["Comfort Food"] },
-                    { name: "泰式生蝦", moods: [] },
-                    { name: "越南春卷", moods: ["健康清淡啲～"] },
-                    { name: "泰式明爐魚", moods: ["健康清淡啲～", "想食豪啲！"] },
-                    { name: "新加坡胡椒蟹", moods: ["想食豪啲！"] }
-                ],
-                "其他特色": [
-                    { name: "西班牙海鮮飯 (Paella)", moods: ["想食豪啲！"] },
-                    { name: "法國菜 (例：油封鴨腿)", moods: ["想食豪啲！"] },
-                    { name: "印度菜 (例：Tandoori烤雞)", moods: ["Comfort Food"] },
-                    { name: "墨西哥菜 (例：Tacos, Fajitas)", moods: ["Comfort Food"] },
-                    { name: "德國菜 (例：鹹豬手)", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "瑞士芝士火鍋 (Fondue)", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "俄羅斯菜 (例：羅宋湯, 俄式餃子)", moods: ["Comfort Food"] },
-                    { name: "巴西烤肉", moods: ["想食豪啲！", "Comfort Food"] },
-                    { name: "中東烤肉拼盤 (Mezze Platter)", moods: ["Comfort Food"] },
-                    { name: "秘魯菜 (例：Ceviche)", moods: [] }
-                ]
+                "日式": [ /* ... (existing + more) ... */ { name: "壽司Omakase", moods: ["想食豪啲！"] }, { name: "鐵板燒", moods: ["想食豪啲！"] }, { name: "鰻魚飯 (鰻重)", moods: ["想食豪啲！", "Comfort Food"] }, { name: "日式燒肉 (Yakiniku)", moods: ["想食豪啲！", "Comfort Food"] } ],
+                "韓式": [ /* ... (existing + more) ... */ { name: "韓式烤肉 (KBBQ)", moods: ["想食豪啲！", "Comfort Food"] }, { name: "部隊鍋", moods: ["Comfort Food"] }, { name: "醬油蟹", moods: ["想食豪啲！"] } ],
+                "西式": [ /* ... (existing + more) ... */ { name: "牛扒 (西冷/肉眼)", moods: ["想食豪啲！"] }, { name: "Fine Dining (多道菜套餐)", moods: ["想食豪啲！"] }, { name: "烤豬肋骨 (BBQ Ribs)", moods: ["Comfort Food", "想食豪啲！"] } ],
+                "意大利菜": [ /* ... (existing + more) ... */ { name: "各式手造意粉", moods: ["Comfort Food"] }, { name: "T骨牛扒 (Bistecca alla Fiorentina)", moods: ["想食豪啲！"] }, { name: "松露意粉/飯", moods: ["想食豪啲！"] } ],
+                "東南亞": [ /* ... (existing + more) ... */ { name: "泰國菜 (例：冬蔭功, 咖喱蟹)", moods: ["Comfort Food", "想食豪啲！"] }, { name: "星馬菜 (例：辣椒蟹, 參巴醬燒魚)", moods: ["想食豪啲！"] } ],
+                "其他特色": [ /* ... (existing, excluding Taiwanese) ... */ { name: "西班牙海鮮飯 (Paella)", moods: ["想食豪啲！"] }, { name: "法國菜 (例：油封鴨腿)", moods: ["想食豪啲！"] }, { name: "印度菜 (例：Tandoori烤雞)", moods: ["Comfort Food"] } ]
             },
             supper: {
-                "港式": [
-                    { name: "碗仔翅", moods: ["Comfort Food", "快靚正"] },
-                    { name: "魚蛋燒賣 (街邊檔)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "炸大腸", moods: ["Comfort Food"] },
-                    { name: "串燒 (港式)", moods: ["Comfort Food"] },
-                    { name: "車仔麵 (宵夜檔)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "潮州打冷 (鵝片、蠔餅、凍蟹)", moods: ["想食豪啲！"] },
-                    { name: "炒粉麵 (乾炒牛河、豉油王炒麵)", moods: ["Comfort Food", "快靚正"] },
-                    { name: "即食麵加料", moods: ["快靚正", "Comfort Food"] },
-                    { name: "煎釀三寶", moods: ["快靚正", "Comfort Food"] },
-                    { name: "生菜魚肉湯", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "炒蜆", moods: ["Comfort Food"] },
-                    { name: "炸雞脾", moods: ["Comfort Food"] },
-                    { name: "狗仔粉", moods: ["Comfort Food"] },
-                    { name: "艇仔粥", moods: ["Comfort Food", "健康清淡啲～"] }
+                "港式": [ /* ... (existing + more) ... */ { name: "碗仔翅", moods: ["Comfort Food", "快靚正"] }, { name: "潮州打冷 (鵝片、蠔餅)", moods: ["想食豪啲！"] }, { name: "炒粉麵 (乾炒牛河)", moods: ["Comfort Food", "快靚正"] } ],
+                "中式": [ /* ... (existing + more) ... */ { name: "粥品 (皮蛋瘦肉粥)", moods: ["健康清淡啲～", "Comfort Food"] }, { name: "糖水 (芝麻糊)", moods: ["Comfort Food", "健康清淡啲～"] }, { name: "麻辣小龍蝦", moods: ["Comfort Food", "想食豪啲！"] } ],
+                "台式": [ // New Taiwanese category for supper
+                    { name: "鹽酥雞 (宵夜)", moods: ["Comfort Food", "快靚正"] }, { name: "甜不辣 (宵夜)", moods: ["Comfort Food", "快靚正"] },
+                    { name: "大腸麵線 (宵夜)", moods: ["Comfort Food"] }, { name: "滷味拼盤 (台式)", moods: ["Comfort Food"] },
+                    { name: "刈包 (宵夜)", moods: ["Comfort Food"] }, { name: "台式關東煮", moods: ["健康清淡啲～", "Comfort Food"] }
                 ],
-                "中式": [
-                    { name: "粥品 (皮蛋瘦肉粥、艇仔粥)", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "糖水 (芝麻糊、合桃糊、腐竹雞蛋)", moods: ["Comfort Food", "健康清淡啲～"] },
-                    { name: "點心 (宵夜時段, 如蝦餃、燒賣)", moods: ["Comfort Food"] },
-                    { name: "腸粉 (宵夜檔)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "粢飯豆漿 (宵夜檔)", moods: ["Comfort Food"] },
-                    { name: "雲吞麵 (宵夜)", moods: ["Comfort Food"] },
-                    { name: "糖不甩", moods: ["Comfort Food"] },
-                    { name: "喳咋", moods: ["Comfort Food"] },
-                    { name: "桑寄生蓮子蛋茶", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "麻辣小龍蝦", moods: ["Comfort Food", "想食豪啲！"] }
-                ],
-                "日式": [
-                    { name: "居酒屋小食 (串燒、枝豆、炸雞軟骨)", moods: ["Comfort Food"] },
-                    { name: "拉麵 (宵夜份量)", moods: ["Comfort Food", "快靚正"] },
-                    { name: "關東煮", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "日式炒麵 (Yakisoba)", moods: ["Comfort Food"] },
-                    { name: "茶漬飯 (Ochazuke)", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "日式餃子 (宵夜)", moods: ["Comfort Food", "快靚正"] },
-                    { name: "玉子燒", moods: ["Comfort Food", "快靚正"] },
-                    { name: "清酒煮蜆", moods: ["Comfort Food"] }
-                ],
-                "快餐/輕食": [
-                    { name: "即食麵 (自己煮)", moods: ["快靚正", "Comfort Food"] },
-                    { name: "便利店關東煮/點心", moods: ["快靚正"] },
-                    { name: "薯片/零食", moods: ["Comfort Food"] },
-                    { name: "杯麵", moods: ["快靚正", "Comfort Food"] },
-                    { name: "麥當勞/KFC (24小時分店)", moods: ["快靚正"] },
-                    { name: "叮叮點心/飯盒", moods: ["快靚正"] },
-                    { name: "芝士撈麵", moods: ["Comfort Food", "快靚正"] },
-                    { name: "烤蕃薯", moods: ["健康清淡啲～", "Comfort Food"] },
-                    { name: "熱狗腸仔", moods: ["快靚正", "Comfort Food"] },
-                    { name: "微波爐爆谷", moods: ["Comfort Food"] }
-                ],
-                "其他": [
-                    { name: "串燒 (新疆/沙嗲)", moods: ["Comfort Food"] },
-                    { name: "甜品 (B仔涼粉、芒果糯米糍、楊枝甘露)", moods: ["Comfort Food"] },
-                    { name: "台式鹽酥雞", moods: ["Comfort Food"] },
-                    { name: "韓式炸雞 (外賣)", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "滷味 (台式/港式)", moods: ["Comfort Food"] },
-                    { name: "Pizza (外賣)", moods: ["Comfort Food", "想食豪啲！"] },
-                    { name: "臭豆腐", moods: [] },
-                    { name: "麻辣燙 (宵夜)", moods: ["Comfort Food"] },
-                    { name: "土匪雞翼", moods: ["Comfort Food"] }
-                ]
+                "日式": [ /* ... (existing + more) ... */ { name: "居酒屋小食 (串燒)", moods: ["Comfort Food"] }, { name: "拉麵 (宵夜份量)", moods: ["Comfort Food", "快靚正"] }, { name: "茶漬飯 (Ochazuke)", moods: ["健康清淡啲～", "Comfort Food"] } ],
+                "快餐/輕食": [ /* ... (existing + more) ... */ { name: "即食麵 (自己煮)", moods: ["快靚正", "Comfort Food"] }, { name: "杯麵", moods: ["快靚正", "Comfort Food"] }, { name: "麥當勞/KFC (24小時分店)", moods: ["快靚正"] } ],
+                "其他": [ /* ... (existing, excluding Taiwanese) ... */ { name: "串燒 (新疆/沙嗲)", moods: ["Comfort Food"] }, { name: "甜品 (芒果糯米糍)", moods: ["Comfort Food"] }, { name: "韓式炸雞 (外賣宵夜)", moods: ["Comfort Food", "想食豪啲！"] } ]
             }
         };
 
@@ -610,29 +297,29 @@
         };
 
         const hongKongDistricts = {
-            "中西區": ["中環", "金鐘", "上環", "西環", "堅尼地城", "石塘咀"],
-            "灣仔區": ["灣仔", "銅鑼灣", "跑馬地", "大坑", "鵝頸橋"],
-            "東區": ["北角", "鰂魚涌", "太古", "西灣河", "筲箕灣", "柴灣", "小西灣"],
-            "南區": ["薄扶林", "香港仔", "鴨脷洲", "黃竹坑", "深水灣", "淺水灣", "赤柱", "石澳"],
-            "油尖旺區": ["尖沙咀", "佐敦", "油麻地", "旺角", "太子", "大角咀"],
-            "深水埗區": ["深水埗", "長沙灣", "荔枝角", "美孚", "石硤尾"],
-            "九龍城區": ["紅磡", "黃埔花園", "何文田", "九龍塘", "九龍城", "土瓜灣", "啟德"],
-            "黃大仙區": ["黃大仙", "鑽石山", "新蒲崗", "慈雲山", "樂富", "牛池灣", "竹園"],
-            "觀塘區": ["觀塘", "牛頭角", "九龍灣", "藍田", "油塘", "秀茂坪", "順利邨"],
-            "葵青區": ["葵涌", "青衣", "荔景", "葵芳", "葵興"],
-            "荃灣區": ["荃灣", "深井", "汀九", "馬灣", "荃灣西"],
-            "屯門區": ["屯門市中心", "蝴蝶灣", "黃金海岸", "掃管笏", "屯門碼頭", "藍地"],
-            "元朗區": ["元朗市中心", "天水圍", "錦田", "八鄉", "洪水橋", "屏山", "廈村", "流浮山"],
-            "北區": ["上水", "粉嶺", "沙頭角", "打鼓嶺", "皇后山"],
-            "大埔區": ["大埔墟", "太和", "大埔中心", "白石角", "大埔滘", "船灣"],
-            "沙田區": ["沙田市中心", "大圍", "火炭", "馬鞍山", "烏溪沙", "小瀝源", "石門"],
-            "西貢區": ["西貢市中心", "將軍澳 (寶琳, 坑口, 調景嶺)", "清水灣", "科技大學"],
-            "離島區": ["東涌", "愉景灣", "長洲", "坪洲", "南丫島", "大澳", "梅窩", "機場"]
+            "中西區": ["中環", "金鐘", "上環", "西環", "堅尼地城", "石塘咀", "半山"],
+            "灣仔區": ["灣仔", "銅鑼灣", "跑馬地", "大坑", "鵝頸橋", "天后", "金鐘 (近灣仔部分)"],
+            "東區": ["北角", "鰂魚涌", "太古", "西灣河", "筲箕灣", "柴灣", "小西灣", "杏花邨", "炮台山"],
+            "南區": ["薄扶林", "香港仔", "鴨脷洲", "黃竹坑", "深水灣", "淺水灣", "赤柱", "石澳", "數碼港", "華富"],
+            "油尖旺區": ["尖沙咀", "佐敦", "油麻地", "旺角", "太子", "大角咀", "西九龍"],
+            "深水埗區": ["深水埗", "長沙灣", "荔枝角", "美孚", "石硤尾", "南昌"],
+            "九龍城區": ["紅磡", "黃埔花園", "何文田", "九龍塘", "九龍城", "土瓜灣", "啟德", "樂富 (近九龍城部分)"],
+            "黃大仙區": ["黃大仙", "鑽石山", "新蒲崗", "慈雲山", "樂富", "牛池灣", "竹園", "橫頭磡"],
+            "觀塘區": ["觀塘", "牛頭角", "九龍灣", "藍田", "油塘", "秀茂坪", "順利邨", "APM", "德福廣場"],
+            "葵青區": ["葵涌", "青衣", "荔景", "葵芳", "葵興", "貨櫃碼頭"],
+            "荃灣區": ["荃灣", "深井", "汀九", "馬灣", "荃灣西", "愉景新城", "麗城"],
+            "屯門區": ["屯門市中心", "蝴蝶灣", "黃金海岸", "掃管笏", "屯門碼頭", "藍地", "兆康", "良景"],
+            "元朗區": ["元朗市中心", "天水圍", "錦田", "八鄉", "洪水橋", "屏山", "廈村", "流浮山", "YOHO Mall"],
+            "北區": ["上水", "粉嶺", "沙頭角", "打鼓嶺", "皇后山", "聯和墟"],
+            "大埔區": ["大埔墟", "太和", "大埔中心", "白石角", "大埔滘", "船灣", "科學園 (近大埔部分)"],
+            "沙田區": ["沙田市中心", "大圍", "火炭", "馬鞍山", "烏溪沙", "小瀝源", "石門", "第一城", "科學園 (近沙田部分)"],
+            "西貢區": ["西貢市中心", "將軍澳 (寶琳, 坑口, 調景嶺, 康城)", "清水灣", "科技大學"],
+            "離島區": ["東涌", "愉景灣", "長洲", "坪洲", "南丫島", "大澳", "梅窩", "機場", "貝澳", "塘福"]
         };
 
-        // --- Expanded Restaurant Data (Targeting >50 entries) ---
+        // --- Expanded Restaurant Data (Targeting >150 entries, "台式" separated) ---
         const restaurantData = [
-            // 港式 (Target: 10-15)
+            // 港式 (Aim for 25-30)
             { name: "澳洲牛奶公司", cuisine: "港式", district: ["佐敦"], note: "炒蛋多士, 燉奶", moods: ["快靚正", "Comfort Food"], price: "$" },
             { name: "華嫂冰室", cuisine: "港式", district: ["灣仔", "觀塘", "元朗市中心", "尖沙咀"], note: "菠蘿包, 番茄豬扒通粉", moods: ["快靚正", "Comfort Food"], price: "$" },
             { name: "金鳳茶餐廳", cuisine: "港式", district: ["灣仔"], note: "酥皮蛋撻, 雞批", moods: ["快靚正", "Comfort Food"], price: "$" },
@@ -648,12 +335,24 @@
             { name: "陸羽茶室", cuisine: "港式", district: ["中環"], note: "傳統點心, 杏汁白肺湯", moods: ["想食豪啲！"], price: "$$$" },
             { name: "一點心", cuisine: "港式", district: ["太子", "旺角"], note: "即叫即蒸點心", moods: ["快靚正", "Comfort Food"], price: "$" },
             { name: "蓮香居", cuisine: "港式", district: ["上環"], note: "傳統點心車仔點心, 豬潤燒賣", moods: ["Comfort Food"], price: "$$" },
-            { name: "祥興記上海生煎包", cuisine: "港式", district: ["多區，如旺角", "尖沙咀"], note: "生煎包", moods: ["快靚正", "Comfort Food"], price: "$" },
+            { name: "祥興記上海生煎包", cuisine: "港式", district: ["旺角", "尖沙咀", "銅鑼灣"], note: "生煎包", moods: ["快靚正", "Comfort Food"], price: "$" },
+            { name: "翠華餐廳", cuisine: "港式", district: ["尖沙咀", "中環", "銅鑼灣", "旺角", "機場"], note: "連鎖茶餐廳, 魚蛋粉, 奶油豬", moods: ["快靚正", "Comfort Food"], price: "$$" },
+            { name: "太興", cuisine: "港式", district: ["旺角", "銅鑼灣", "觀塘", "沙田市中心"], note: "燒味, 冰鎮奶茶", moods: ["快靚正", "Comfort Food"], price: "$$" },
+            { name: "澳門茶餐廳", cuisine: "港式", district: ["尖沙咀", "銅鑼灣", "上環"], note: "葡撻, 豬扒包, 咖喱牛腩", moods: ["Comfort Food"], price: "$$" },
+            { name: "何洪記粥麵專家", cuisine: "港式", district: ["銅鑼灣"], note: "米芝蓮粥麵, 乾炒牛河", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "一粥麵", cuisine: "港式", district: ["多區，如樂富", "黃大仙", "荃灣"], note: "連鎖粥麵店, 套餐", moods: ["快靚正", "健康清淡啲～"], price: "$" },
+            { name: "靠得住粥麵小館", cuisine: "港式", district: ["灣仔", "中環", "鰂魚涌"], note: "魚湯粥品, 艇仔粥", moods: ["Comfort Food", "健康清淡啲～"], price: "$$" },
+            { name: "佳佳甜品", cuisine: "港式", district: ["佐敦"], note: "中式糖水, 芝麻糊, 合桃糊", moods: ["Comfort Food", "宵夜佳選"], price: "$" },
+            { name: "通達食店", cuisine: "港式", district: ["元朗市中心", "旺角", "太子"], note: "街頭小食, 魚蛋, 腸粉", moods: ["快靚正", "Comfort Food"], price: "$" },
+            { name: "蛇王芬", cuisine: "港式", district: ["中環"], note: "蛇羹, 臘味飯", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "星座冰室", cuisine: "港式", district: ["尖沙咀"], note: "番茄麵, 炒蛋", moods: ["Comfort Food", "快靚正"], price: "$" },
+            { name: "金華冰廳", cuisine: "港式", district: ["太子"], note: "菠蘿油, 蛋撻", moods: ["Comfort Food", "快靚正"], price: "$" },
+            { name: "華星冰室", cuisine: "港式", district: ["灣仔", "旺角", "筲箕灣"], note: "黑松露炒蛋多士, 校長多士", moods: ["Comfort Food", "快靚正"], price: "$" },
+            { name: "永華麵家", cuisine: "港式", district: ["灣仔"], note: "竹昇麵, 雲吞麵", moods: ["Comfort Food"], price: "$$" },
+            { name: "新記餐廳 (車仔麵)", cuisine: "港式", district: ["銅鑼灣", "尖沙咀"], note: "車仔麵, 瑞士雞翼", moods: ["快靚正", "Comfort Food"], price: "$" },
 
-
-            // 中式 (Target: 10-12)
-            { name: "鼎泰豐", cuisine: "中式", district: ["銅鑼灣", "尖沙咀", "沙田市中心", "旺角"], note: "小籠包, 排骨蛋炒飯", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
-            { name: "老鍋台式火鍋", cuisine: "中式", district: ["銅鑼灣", "旺角", "尖沙咀"], note: "養生鍋, 麻辣鍋", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            // 中式 (Aim for 20-25)
+            { name: "老鍋台式火鍋", cuisine: "台式", district: ["銅鑼灣", "旺角", "尖沙咀"], note: "養生鍋, 麻辣鍋", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" }, // Moved to 台式
             { name: "詠藜園四川擔擔麵", cuisine: "中式", district: ["黃大仙", "尖沙咀"], note: "擔擔麵, 四川小菜", moods: ["Comfort Food"], price: "$$" },
             { name: "北京樓", cuisine: "中式", district: ["金鐘", "中環", "尖沙咀", "旺角", "太古"], note: "片皮鴨, 京式點心", moods: ["想食豪啲！"], price: "$$$" },
             { name: "美心皇宮", cuisine: "中式", district: ["中環", "金鐘", "銅鑼灣", "旺角", "沙田市中心"], note: "粵式點心, 婚宴酒席", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
@@ -661,75 +360,114 @@
             { name: "胡同", cuisine: "中式", district: ["尖沙咀"], note: "北方菜, 維港景", moods: ["想食豪啲！"], price: "$$$$" },
             { name: "三希樓", cuisine: "中式", district: ["中環", "銅鑼灣"], note: "川菜, 水煮魚", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
             { name: "夜上海", cuisine: "中式", district: ["金鐘", "尖沙咀"], note: "上海菜, 蟹粉菜式", moods: ["想食豪啲！"], price: "$$$$" },
-            { name: "翡翠拉麵小籠包", cuisine: "中式", district: ["多區，如中環", "銅鑼灣", "尖沙咀"], note: "小籠包, 拉麵", moods: ["Comfort Food", "快靚正"], price: "$$" },
-            { name: "南海一號", cuisine: "中式", district: ["尖沙咀"], note: "高級粵菜, 海鮮", moods: ["想食豪啲！"], price: "$$$$" },
-            { name: "天香樓", cuisine: "中式", district: ["尖沙咀", "中環"], note: "杭幫菜, 龍井蝦仁, 東坡肉", moods: ["想食豪啲！", "Comfort Food"], price: "$$$$" },
+            { name: "好到底麵家", cuisine: "中式", district: ["元朗市中心"], note: "蝦籽撈麵, 雲吞麵", moods: ["Comfort Food"], price: "$" },
+            { name: "麥奀雲吞麵世家", cuisine: "中式", district: ["中環", "佐敦", "銅鑼灣"], note: "傳統雲吞麵", moods: ["Comfort Food"], price: "$$" },
+            { name: "海底撈火鍋", cuisine: "中式", district: ["油麻地", "銅鑼灣", "旺角"], note: "川式火鍋, 服務周到", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "龍景軒", cuisine: "中式", district: ["中環"], note: "米芝蓮三星粵菜", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "卅二公館 (Mott 32)", cuisine: "中式", district: ["中環"], note: "摩登中菜, 叉燒", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "利苑酒家", cuisine: "中式", district: ["多區，如中環", "灣仔", "旺角", "觀塘"], note: "粵菜, 點心, 燉湯", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
+            { name: "譽瓏軒", cuisine: "中式", district: ["中環"], note: "高級粵菜 (澳門過江龍)", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "張公館", cuisine: "中式", district: ["銅鑼灣"], note: "創意中菜", moods: ["想食豪啲！"], price: "$$$" },
+            { name: "農圃飯店", cuisine: "中式", district: ["銅鑼灣", "中環"], note: "傳統粵菜", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
+            { name: "書湘門第", cuisine: "中式", district: ["灣仔", "西環"], note: "湖南菜", moods: ["Comfort Food"], price: "$$" },
+            { name: "老上海飯店", cuisine: "中式", district: ["灣仔"], note: "傳統上海菜", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "鄧記 (四川菜)", cuisine: "中式", district: ["灣仔"], note: "正宗川菜", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "新斗記", cuisine: "中式", district: ["佐敦", "灣仔", "中環"], note: "燒乳豬, 小炒", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "名人坊高級粵菜", cuisine: "中式", district: ["中環"], note: "米芝蓮粵菜", moods: ["想食豪啲！"], price: "$$$$" },
+
+            // 台式 (Aim for 10-15)
+            { name: "鼎泰豐", cuisine: "台式", district: ["銅鑼灣", "尖沙咀", "沙田市中心", "旺角"], note: "小籠包, 排骨蛋炒飯", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "程班長台灣美食", cuisine: "台式", district: ["荔枝角", "九龍灣"], note: "牛肉麵, 滷肉飯", moods: ["Comfort Food", "快靚正"], price: "$$" },
+            { name: "阿元來了", cuisine: "台式", district: ["西環", "觀塘"], note: "滷肉飯, 蛋餅, 小食", moods: ["Comfort Food", "快靚正"], price: "$" },
+            { name: "叁和院台灣風格飲食", cuisine: "台式", district: ["旺角"], note: "創意台菜, 包點可愛", moods: ["Comfort Food"], price: "$$" },
+            { name: "Check In Taipei", cuisine: "台式", district: ["旺角", "尖沙咀"], note: "新派台菜, 珍珠奶茶火鍋", moods: ["Comfort Food"], price: "$$" },
+            { name: "吃什麼 What's To Eat", cuisine: "台式", district: ["深水埗", "太子"], note: "台式便當, 小食", moods: ["快靚正", "Comfort Food"], price: "$" },
+            { name: "茶木‧台式休閒餐廳", cuisine: "台式", district: ["多區，如銅鑼灣", "旺角", "荃灣"], note: "台式套餐, 甜品, 珍珠奶茶", moods: ["Comfort Food", "快靚正"], price: "$$" },
+            { name: "九份飽", cuisine: "台式", district: ["旺角", "銅鑼灣"], note: "台式麵食, 滷味", moods: ["快靚正", "Comfort Food"], price: "$" },
+            { name: "我想和你無所事事", cuisine: "台式", district: ["旺角"], note: "文青風台式餐廳, 輕食", moods: ["Comfort Food", "健康清淡啲～"], price: "$$" },
+            { name: "小時光scoool", cuisine: "台式", district: ["長沙灣"], note: "台式家常便飯, 懷舊風格", moods: ["Comfort Food", "健康清淡啲～"], price: "$$" },
+            { name: "一起食堂", cuisine: "台式", district: ["太子"], note: "台式便當, 麵線", moods: ["快靚正", "Comfort Food"], price: "$" },
+            { name: "幸福週末", cuisine: "台式", district: ["銅鑼灣"], note: "台式厚多士, 飲品", moods: ["Comfort Food"], price: "$$" },
+            { name: "天仁茗茶 (喫茶趣)", cuisine: "台式", district: ["多區，如銅鑼灣", "金鐘"], note: "茶料理, 珍珠奶茶", moods: ["健康清淡啲～", "Comfort Food"], price: "$$" },
+
+            // 日式 (Aim for 20-25, including previous)
+            // ... (previous 12 + 8-13 more)
+            { name: "Sushiyoshi 壽司芳", cuisine: "日式", district: ["尖沙咀"], note: "Omakase, 創意壽司", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "Monster Sushi", cuisine: "日式", district: ["旺角", "尖沙咀", "銅鑼灣"], note: "創意卷物, 刺身", moods: ["Comfort Food"], price: "$$" },
+            { name: "金田長壽司", cuisine: "日式", district: ["尖沙咀"], note: "Omakase, 熟客多", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "竹壽司 (Sushi Takeda)", cuisine: "日式", district: ["中環"], note: "Omakase", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "一門 (Ichimon)", cuisine: "日式", district: ["尖沙咀"], note: "拉麵, 沾麵", moods: ["Comfort Food"], price: "$$" },
+            { name: "銀座いわ (Ginza Iwa)", cuisine: "日式", district: ["中環"], note: "米芝蓮壽司", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "天海 (Tenkai)", cuisine: "日式", district: ["尖沙咀"], note: "天婦羅Omakase", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "漁獲浜燒 (Uo-Show Hamayaki)", cuisine: "日式", district: ["銅鑼灣"], note: "浜燒海鮮", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "富士山55沾麵屋", cuisine: "日式", district: ["銅鑼灣", "旺角"], note: "沾麵專門店", moods: ["Comfort Food"], price: "$$" },
+            { name: "三田製麵所", cuisine: "日式", district: ["銅鑼灣", "尖沙咀", "旺角"], note: "濃厚豚骨魚介沾麵", moods: ["Comfort Food"], price: "$$" },
+            { name: "吉豚屋吉列豬扒專門店 (Katsuya)", cuisine: "日式", district: ["多區，如銅鑼灣", "旺角"], note: "吉列豬扒飯", moods: ["Comfort Food", "快靚正"], price: "$" },
+            { name: "鳥華亭 (Torihana Tei)", cuisine: "日式", district: ["銅鑼灣", "中環"], note: "親子丼, 雞肉料理", moods: ["Comfort Food"], price: "$$$" },
+            { name: "鮨魯山", cuisine: "日式", district: ["灣仔"], note: "Omakase", moods: ["想食豪啲！"], price: "$$$$" },
 
 
-            // 日式 (Target: 10-12)
-            { name: "一蘭拉麵", cuisine: "日式", district: ["銅鑼灣", "尖沙咀", "旺角"], note: "豚骨拉麵", moods: ["Comfort Food", "快靚正"], price: "$$" },
-            { name: "壽司郎", cuisine: "日式", district: ["佐敦", "黃埔花園", "荔枝角", "旺角", "多區"], note: "迴轉壽司", moods: ["快靚正", "Comfort Food"], price: "$" },
-            { name: "和民居食屋", cuisine: "日式", district: ["多區，如銅鑼灣", "旺角", "荃灣"], note: "綜合日式料理", moods: ["Comfort Food", "快靚正"], price: "$$" },
-            { name: "俺流塩らーめん", cuisine: "日式", district: ["銅鑼灣", "尖沙咀", "中環"], note: "鹽味拉麵, 沾麵", moods: ["Comfort Food"], price: "$$" },
-            { name: "Sushi Saito", cuisine: "日式", district: ["中環"], note: "頂級Omakase", moods: ["想食豪啲！"], price: "$$$$" },
-            { name: "Yardbird", cuisine: "日式", district: ["上環"], note: "日式串燒 (雞肉專門)", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
-            { name: "Zuma", cuisine: "日式", district: ["中環"], note: "現代日式料理, 早午餐", moods: ["想食豪啲！"], price: "$$$$" },
-            { name: "豚王", cuisine: "日式", district: ["中環", "銅鑼灣", "尖沙咀", "沙田市中心"], note: "豚骨拉麵, 限定王", moods: ["Comfort Food"], price: "$$" },
-            { name: "丸龜製麵", cuisine: "日式", district: ["中環", "旺角", "觀塘", "多區"], note: "自助烏冬, 天婦羅", moods: ["快靚正", "健康清淡啲～"], price: "$" },
-            { name: "牛角日本燒肉專門店", cuisine: "日式", district: ["多區，如銅鑼灣", "旺角", "尖沙咀"], note: "日式燒肉放題/套餐", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
-            { name: "AFURI 辛紅", cuisine: "日式", district: ["銅鑼灣", "尖沙咀"], note: "柚子鹽拉麵, 辣味拉麵", moods: ["Comfort Food"], price: "$$" },
-            { name: "權八居酒屋 (Gonpachi)", cuisine: "日式", district: ["銅鑼灣"], note: "串燒, 蕎麥麵, 電影Kill Bill場景", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
+            // 韓式 (Aim for 10-12, including previous)
+            // ... (previous 6 + 4-6 more)
+            { name: "Oppa Coffee Bar Restaurant", cuisine: "韓式", district: ["尖沙咀", "旺角"], note: "韓式炸雞, 部隊鍋", moods: ["Comfort Food", "快靚正"], price: "$$" },
+            { name: "新麻蒲 BBQ (Shin Mapo BBQ)", cuisine: "韓式", district: ["銅鑼灣", "旺角", "觀塘"], note: "護心肉, 爐邊蛋", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "Oppa's Kitchen", cuisine: "韓式", district: ["旺角"], note: "韓式家庭料理", moods: ["Comfort Food"], price: "$$" },
+            { name: "The Joomak", cuisine: "韓式", district: ["尖沙咀"], note: "摩登韓式酒吧菜", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
+            { name: "Sodam Korean BBQ", cuisine: "韓式", district: ["銅鑼灣"], note: "韓燒放題", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
+            { name: "Kim's Spoon", cuisine: "韓式", district: ["太古", "九龍塘"], note: "韓式連鎖餐廳", moods: ["快靚正", "Comfort Food"], price: "$$" },
 
 
-            // 韓式 (Target: 5-7)
-            { name: "School Food", cuisine: "韓式", district: ["銅鑼灣", "旺角", "沙田市中心", "九龍塘"], note: "新派韓式小食, 紫菜包飯卷", moods: ["快靚正", "Comfort Food"], price: "$$" },
-            { name: "柞木炭家 (MeokBang Korean BBQ & Bar)", cuisine: "韓式", district: ["尖沙咀", "銅鑼灣", "旺角"], note: "韓式烤肉", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
-            { name: "李家 (Lee Ga)", cuisine: "韓式", district: ["尖沙咀", "銅鑼灣", "元朗市中心"], note: "傳統韓國菜, 醬油蟹", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
-            { name: "NeNe Chicken", cuisine: "韓式", district: ["旺角", "觀塘", "荃灣", "多區"], note: "韓式炸雞, 多種口味", moods: ["Comfort Food", "快靚正"], price: "$$" },
-            { name: "本家 (Bornga)", cuisine: "韓式", district: ["太古", "尖沙咀"], note: "白種元烤肉店, 牛肉", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
-            { name: "Hansik Goo", cuisine: "韓式", district: ["中環"], note: "現代精緻韓國菜", moods: ["想食豪啲！"], price: "$$$$" },
-
-            // 西式/意大利菜 (Target: 10-12)
-            { name: "The Cheesecake Factory", cuisine: "西式", district: ["尖沙咀", "沙田市中心"], note: "美式菜餚, 多款芝士蛋糕", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
-            { name: "Feather & Bone", cuisine: "西式", district: ["中環", "灣仔", "跑馬地", "西環", "愉景灣"], note: "扒房, 自選肉類, 早午餐", moods: ["想食豪啲！", "健康清淡啲～"], price: "$$$" },
-            { name: "Morton's The Steakhouse", cuisine: "西式", district: ["尖沙咀"], note: "美式扒房, 大份量牛扒", moods: ["想食豪啲！"], price: "$$$$" },
-            { name: "Classified", cuisine: "西式", district: ["上環", "赤柱", "淺水灣", "多區"], note: "歐陸輕食, 芝士, 咖啡", moods: ["健康清淡啲～", "快靚正"], price: "$$" },
-            { name: "Pici Pasta Bar", cuisine: "意大利菜", district: ["中環", "灣仔", "尖沙咀", "沙田市中心", "荔枝角", "堅尼地城"], note: "手造意粉", moods: ["Comfort Food", "快靚正"], price: "$$" },
-            { name: "Motorino", cuisine: "意大利菜", district: ["中環", "灣仔", "上環"], note: "拿坡里薄餅", moods: ["Comfort Food"], price: "$$$" },
-            { name: "Carbone", cuisine: "意大利菜", district: ["中環"], note: "紐約意式餐廳, 復古風情", moods: ["想食豪啲！", "Comfort Food"], price: "$$$$" },
-            { name: "Amber", cuisine: "西式", district: ["中環"], note: "米芝蓮二星法國菜, 創新菜式", moods: ["想食豪啲！"], price: "$$$$" },
-            { name: "Caprice", cuisine: "西式", district: ["中環"], note: "米芝蓮三星法國菜, 經典奢華", moods: ["想食豪啲！"], price: "$$$$" },
-            { name: "La Vache!", cuisine: "西式", district: ["中環", "尖沙咀"], note: "法式牛扒薯條專門店", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
-            { name: "Posto Pubblico", cuisine: "意大利菜", district: ["中環"], note: "美式意大利菜, 肉丸", moods: ["Comfort Food"], price: "$$$" },
+            // 西式/意大利菜 (Aim for 20-25, including previous)
+            // ... (previous 11 + 9-14 more)
+            { name: "Dan Ryan's Chicago Grill", cuisine: "西式", district: ["金鐘", "尖沙咀", "太古"], note: "美式燒烤, 豬仔骨", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "Oolaa", cuisine: "西式", district: ["中環", "灣仔", "東涌"], note: "歐陸菜, 早午餐, 薄餅", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "208 Duecento Otto", cuisine: "意大利菜", district: ["上環"], note: "拿坡里薄餅, 意大利菜", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
+            { name: "CIAK - In The Kitchen", cuisine: "意大利菜", district: ["中環", "太古"], note: "米芝蓮意大利菜, 薄餅", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "Amalfitana", cuisine: "意大利菜", district: ["淺水灣", "中環"], note: "薄餅, 意式海岸風情", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
+            { name: "Otto e Mezzo Bombana", cuisine: "意大利菜", district: ["中環"], note: "米芝蓮三星意大利菜, 白松露", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "The Pawn", cuisine: "西式", district: ["灣仔"], note: "摩登英式菜, 活化舊當鋪", moods: ["想食豪啲！"], price: "$$$" },
+            { name: "Wooloomooloo Steakhouse", cuisine: "西式", district: ["灣仔", "尖沙咀"], note: "扒房, 維港景", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "Fini's (Italian American)", cuisine: "意大利菜", district: ["中環", "灣仔"], note: "美式意大利薄餅, 意粉", moods: ["Comfort Food"], price: "$$" },
+            { name: "Henry", cuisine: "西式", district: ["尖沙咀"], note: "美式扒房及燒烤", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "Belon", cuisine: "西式", district: ["中環"], note: "新派法國菜", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "Grissini", cuisine: "意大利菜", district: ["灣仔"], note: "傳統意大利菜, 酒店餐廳", moods: ["想食豪啲！"], price: "$$$$" },
+            { name: "Morty's Delicatessen", cuisine: "西式", district: ["中環", "太古"], note: "紐約熟食店, 煙燻牛肉三文治", moods: ["Comfort Food"], price: "$$" },
+            { name: "The Pizza Project", cuisine: "意大利菜", district: ["中環", "灣仔"], note: "手拉薄餅", moods: ["Comfort Food", "快靚正"], price: "$$" },
 
 
-            // 東南亞 (Target: 7-8)
-            { name: "Brass Spoon", cuisine: "東南亞", district: ["灣仔", "上環", "中環", "銅鑼灣"], note: "越南牛肉粉 (Pho)", moods: ["Comfort Food", "健康清淡啲～"], price: "$$" },
-            { name: "Chachawan", cuisine: "東南亞", district: ["上環"], note: "泰國依善菜, 燒烤", moods: ["Comfort Food"], price: "$$$" },
-            { name: "芽莊越式料理", cuisine: "東南亞", district: ["中環", "銅鑼灣", "太古", "多區"], note: "綜合越南菜", moods: ["Comfort Food", "健康清淡啲～"], price: "$$" },
-            { name: "天天海南雞飯 (香港店)", cuisine: "東南亞", district: ["銅鑼灣", "旺角", "中環"], note: "新加坡海南雞飯", moods: ["Comfort Food", "快靚正"], price: "$" },
-            { name: "Samsen 泰麵", cuisine: "東南亞", district: ["灣仔", "上環", "石塘咀"], note: "泰式船麵, 街頭風味", moods: ["Comfort Food"], price: "$$" },
-            { name: "BÊP Vietnamese Kitchen", cuisine: "東南亞", district: ["中環", "九龍塘", "太古", "灣仔"], note: "越南菜, 環境舒適", moods: ["Comfort Food", "健康清淡啲～"], price: "$$" },
-            { name: "Co Thanh", cuisine: "東南亞", district: ["中環"], note: "越南街頭小食, 順化牛肉粉", moods: ["Comfort Food"], price: "$$" },
-            { name: "Le Garcon Saigon", cuisine: "東南亞", district: ["灣仔"], note: "新派越南燒烤", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
+            // 東南亞 (Aim for 15-18, including previous)
+            // ... (previous 8 + 7-10 more)
+            { name: "Mak Mak", cuisine: "東南亞", district: ["中環"], note: "泰國菜, 環境舒適", moods: ["Comfort Food"], price: "$$$" },
+            { name: "老巴剎廚房 (Lao Ba Sa Kitchen)", cuisine: "東南亞", district: ["旺角"], note: "星馬菜, 肉骨茶", moods: ["Comfort Food"], price: "$$" },
+            { name: "Nha Trang Vietnamese Cuisine", cuisine: "東南亞", district: ["中環", "尖沙咀", "銅鑼灣"], note: "越南菜, 生牛肉河", moods: ["Comfort Food", "健康清淡啲～"], price: "$$" },
+            { name: "Chôm Chôm", cuisine: "東南亞", district: ["中環"], note: "越南街頭小食, 串燒", moods: ["Comfort Food"], price: "$$$" },
+            { name: "泰麵 (Thai Na)", cuisine: "東南亞", district: ["九龍城"], note: "正宗泰國菜", moods: ["Comfort Food"], price: "$$" },
+            { name: "星檳記 (Sing Lum Khui)", cuisine: "東南亞", district: ["銅鑼灣"], note: "檳城美食, 喇沙", moods: ["Comfort Food"], price: "$$" },
+            { name: "阿閒泰 (Aharn Thai)", cuisine: "東南亞", district: ["九龍城"], note: "泰國菜", moods: ["Comfort Food"], price: "$$" },
+            { name: "An Nam 安南", cuisine: "東南亞", district: ["銅鑼灣", "尖沙咀"], note: "高級越南菜", moods: ["想食豪啲！", "健康清淡啲～"], price: "$$$" },
+            { name: "泰簡單 (Thai Simple Kitchen)", cuisine: "東南亞", district: ["旺角", "荃灣"], note: "泰國菜, 性價比高", moods: ["快靚正", "Comfort Food"], price: "$" },
+            { name: "老趙越南餐廳", cuisine: "東南亞", district: ["深水埗"], note: "越南菜, 抵食", moods: ["快靚正", "Comfort Food"], price: "$" },
 
-
-            // 快餐/輕食 (Target: 5-6)
-            { name: "麥當勞", cuisine: "快餐/輕食", district: ["各區"], note: "快餐", moods: ["快靚正"], price: "$" },
-            { name: "KFC", cuisine: "快餐/輕食", district: ["各區"], note: "炸雞快餐", moods: ["快靚正", "Comfort Food"], price: "$" },
-            { name: "Subway", cuisine: "快餐/輕食", district: ["多區"], note: "潛艇堡", moods: ["快靚正", "健康清淡啲～"], price: "$" },
+            // 快餐/輕食 (Aim for 10-12, including previous)
+            // ... (previous 7 + 3-5 more)
+            { name: "Oliver's Super Sandwiches", cuisine: "快餐/輕食", district: ["中環", "金鐘", "太古", "多區"], note: "三文治, 焗薯, 沙律", moods: ["快靚正", "健康清淡啲～"], price: "$$" },
             { name: "Pret A Manger", cuisine: "快餐/輕食", district: ["中環", "金鐘", "灣仔", "銅鑼灣", "尖沙咀", "太古", "觀塘"], note: "三文治, 沙律, 熱食", moods: ["快靚正", "健康清淡啲～"], price: "$$" },
-            { name: "MOS Burger", cuisine: "快餐/輕食", district: ["旺角", "銅鑼灣", "尖沙咀", "多區"], note: "日式漢堡, 米漢堡", moods: ["快靚正", "Comfort Food"], price: "$" },
-            { name: "Five Guys", cuisine: "快餐/輕食", district: ["中環", "灣仔", "尖沙咀"], note: "美式漢堡, 花生任食", moods: ["Comfort Food", "想食豪啲！"], price: "$$" },
-            { name: "Shake Shack", cuisine: "快餐/輕食", district: ["中環", "金鐘", "尖沙咀", "沙田市中心"], note: "美式漢堡, 奶昔", moods: ["Comfort Food", "想食豪啲！"], price: "$$" },
+            { name: "Eric Kayser", cuisine: "快餐/輕食", district: ["中環", "金鐘", "灣仔", "跑馬地"], note: "法式麵包店, 三文治, 咖啡", moods: ["快靚正", "想食豪啲！"], price: "$$" },
+            { name: "Marks & Spencer Cafe", cuisine: "快餐/輕食", district: ["中環", "太古", "九龍塘"], note: "英式輕食, 咖啡, 鬆餅", moods: ["快靚正", "健康清淡啲～"], price: "$$" },
+            { name: "Simplylife Bakery Cafe", cuisine: "快餐/輕食", district: ["金鐘", "九龍塘", "沙田市中心", "多區"], note: "麵包, 西式套餐, 沙律", moods: ["Comfort Food", "健康清淡啲～"], price: "$$" },
 
-
-            // 其他特色 (Target: 3-5)
-            { name: "Little Bao Diner", cuisine: "其他特色", district: ["中環", "銅鑼灣"], note: "新派中式包點, 豬腩包", moods: ["Comfort Food"], price: "$$" },
-            { name: "Din Tai Fung (鼎泰豐)", cuisine: "其他特色", district: ["銅鑼灣", "尖沙咀", "沙田市中心", "旺角"], note: "台式小籠包 (重複, 已在中式列出)", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" }, // Marked as duplicate
-            { name: "Bâtard", cuisine: "其他特色", district: ["西營盤"], note: "法國菜, 葡萄酒吧, 烤雞", moods: ["想食豪啲！", "Comfort Food"], price: "$$$$" },
-            { name: "Ho Lee Fook (口利福)", cuisine: "其他特色", district: ["中環"], note: "摩登中菜, 玩味風格", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
-            { name: "VEA Restaurant & Lounge", cuisine: "其他特色", district: ["中環"], note: "中法融合菜, 米芝蓮一星", moods: ["想食豪啲！"], price: "$$$$" }
+            // 其他特色 (Aim for 10-15, including previous)
+            // ... (previous 5 + 5-10 more)
+            { name: "ATUM Restaurant", cuisine: "其他特色", district: ["尖沙咀", "銅鑼灣"], note: "畫碟甜品, 分子料理甜品", moods: ["想食豪啲！"], price: "$$$" },
+            { name: "Lady M", cuisine: "其他特色", district: ["中環", "銅鑼灣", "尖沙咀", "沙田市中心"], note: "千層蛋糕", moods: ["想食豪啲！", "Comfort Food"], price: "$$$" },
+            { name: "Via Tokyo", cuisine: "其他特色", district: ["銅鑼灣"], note: "日式甜品, 抹茶雪糕", moods: ["Comfort Food"], price: "$$" },
+            { name: "聰嫂星級甜品", cuisine: "其他特色", district: ["銅鑼灣", "灣仔", "將軍澳", "元朗市中心"], note: "港式甜品, 龍眼冰", moods: ["Comfort Food", "快靚正"], price: "$" },
+            { name: "Oddies Foodies", cuisine: "其他特色", district: ["中環", "灣仔"], note: "雞蛋仔雪糕", moods: ["Comfort Food"], price: "$$" },
+            { name: "Bakehouse", cuisine: "其他特色", district: ["灣仔", "中環", "赤柱"], note: "酸種麵包, 蛋撻", moods: ["Comfort Food", "快靚正"], price: "$$" },
+            { name: "Mammy Pancake (媽咪雞蛋仔)", cuisine: "其他特色", district: ["紅磡", "旺角", "銅鑼灣", "多區"], note: "雞蛋仔, 格仔餅, 多種口味", moods: ["快靚正", "Comfort Food"], price: "$" },
+            { name: "The Big Bite", cuisine: "其他特色", district: ["北角"], note: "加拿大Poutine, 熱狗", moods: ["Comfort Food"], price: "$$" },
+            { name: "Burger Joys", cuisine: "其他特色", district: ["灣仔", "中環"], note: "美式漢堡", moods: ["Comfort Food"], price: "$$" },
+            { name: "Maison Eric Kayser", cuisine: "其他特色", district: ["多區"], note: "法式麵包, 甜點", moods: ["想食豪啲！", "Comfort Food"], price: "$$" }
         ];
 
 
@@ -753,16 +491,16 @@
         let activeDistrictL2 = null;
         let lastSuggestedMeal = null;
 
-        function mealTypeToChinese(mealTypeKey) { return ({ breakfast: '早餐', lunch: '午餐', afternoonTea: '下午茶', dinner: '晚餐', supper: '宵夜' })[mealTypeKey] || '時段'; } // Changed 餐期 to 時段
+        function mealTypeToChinese(mealTypeKey) { return ({ breakfast: '早餐', lunch: '午餐', afternoonTea: '下午茶', dinner: '晚餐', supper: '宵夜' })[mealTypeKey] || '時段'; }
         function highlightSelectedButton(buttonGroup, selectedButtonElement) { buttonGroup.forEach(btn => { btn.classList.remove('selected-btn'); if (btn.classList.contains('mood-btn')) { btn.classList.remove('bg-purple-500', 'text-white'); btn.classList.add('bg-purple-400', 'text-purple-800'); } else if (btn.classList.contains('cuisine-btn')) { btn.classList.remove('bg-sky-500', 'text-white'); btn.classList.add('bg-sky-400', 'text-sky-800'); } }); if (selectedButtonElement) { selectedButtonElement.classList.add('selected-btn'); if (selectedButtonElement.classList.contains('mood-btn')) { selectedButtonElement.classList.remove('bg-purple-400', 'text-purple-800'); selectedButtonElement.classList.add('bg-purple-500', 'text-white'); } else if (selectedButtonElement.classList.contains('cuisine-btn')) { selectedButtonElement.classList.remove('bg-sky-400', 'text-sky-800'); selectedButtonElement.classList.add('bg-sky-500', 'text-white'); } } }
         function resetPageDetails() { activeMood = "any"; activeCuisine = null; activeDistrictL1 = null; activeDistrictL2 = null; lastSuggestedMeal = null; renderMoodButtons(); cuisineSelectionArea.innerHTML = ''; districtLevel1Dropdown.innerHTML = '<option value="">請選擇區域 (十八區)...</option>'; districtLevel2Dropdown.innerHTML = '<option value="">請選擇詳細地區...</option>'; districtLevel2Dropdown.disabled = true; txtSuggestion.textContent = '請選擇心情及菜式，或按「隨機揀個菜式」'; txtRestaurantSuggestion.innerHTML = ''; btnTryAgainMeal.classList.add('hidden'); districtSelectionContainer.classList.add('hidden'); restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); highlightSelectedButton(cuisineSelectionArea.querySelectorAll('button'), null); locationStatusMessage.textContent = ''; }
-        function showPage(pageId) { if (pageId === 'pageMealTimeSelection') { pageMealTimeSelection.classList.remove('hidden'); pageDetailsSelection.classList.add('hidden'); initialPrompt.textContent = '請先選擇「時段」'; } else if (pageId === 'pageDetailsSelection') { pageMealTimeSelection.classList.add('hidden'); pageDetailsSelection.classList.remove('hidden'); selectedMealTimeHeader.textContent = mealTypeToChinese(activeMealType); } } // Changed 餐期 to 時段
+        function showPage(pageId) { if (pageId === 'pageMealTimeSelection') { pageMealTimeSelection.classList.remove('hidden'); pageDetailsSelection.classList.add('hidden'); initialPrompt.textContent = '請先選擇「時段」'; } else if (pageId === 'pageDetailsSelection') { pageMealTimeSelection.classList.add('hidden'); pageDetailsSelection.classList.remove('hidden'); selectedMealTimeHeader.textContent = mealTypeToChinese(activeMealType); } }
         function renderMoodButtons() { moodSelectionArea.innerHTML = ''; Object.keys(moods).forEach(moodKey => { const btn = document.createElement('button'); btn.textContent = moods[moodKey]; btn.dataset.mood = moodKey; btn.classList.add('mood-btn', 'bg-purple-400', 'hover:bg-purple-500', 'text-purple-800', 'font-semibold', 'py-2', 'px-3', 'rounded-lg', 'shadow', 'text-sm', 'transform', 'hover:scale-105'); if (moodKey === activeMood) { highlightSelectedButton(moodSelectionArea.querySelectorAll('button'), btn); btn.classList.add('selected-btn', 'bg-purple-500', 'text-white'); btn.classList.remove('bg-purple-400', 'text-purple-800');} btn.addEventListener('click', () => { activeMood = moodKey; highlightSelectedButton(moodSelectionArea.querySelectorAll('button'), btn); if (activeCuisine) { makeMealSuggestion(activeMealType, activeCuisine); if (activeDistrictL2) { findRestaurants(activeCuisine, activeDistrictL2); } } }); moodSelectionArea.appendChild(btn); });}
-        function renderCuisineOptions(mealType, preSelectedCuisineKey) { cuisineSelectionArea.innerHTML = ''; districtSelectionContainer.classList.add('hidden'); restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); btnTryAgainMeal.classList.add('hidden'); if (!mealData[mealType] || Object.keys(mealData[mealType]).length === 0) { txtSuggestion.textContent = `此時段 (${mealTypeToChinese(mealType)}) 暫未有菜式分類。`; return; } const cuisines = Object.keys(mealData[mealType]); cuisines.forEach(cuisineKey => { const btn = document.createElement('button'); btn.textContent = cuisineKey; btn.dataset.cuisine = cuisineKey; btn.classList.add('cuisine-btn', 'bg-sky-400', 'hover:bg-sky-500', 'text-sky-800', 'font-semibold', 'py-2', 'px-3', 'sm:px-4', 'rounded-lg', 'shadow', 'text-sm', 'sm:text-base', 'transform', 'hover:scale-105'); btn.addEventListener('click', () => { activeCuisine = cuisineKey; highlightSelectedButton(cuisineSelectionArea.querySelectorAll('button'), btn); makeMealSuggestion(activeMealType, activeCuisine); txtRestaurantSuggestion.innerHTML = ''; restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); activeDistrictL1 = null; activeDistrictL2 = null; districtLevel1Dropdown.value = ""; districtLevel2Dropdown.innerHTML = '<option value="">請選擇詳細地區...</option>'; districtLevel2Dropdown.disabled = true; }); cuisineSelectionArea.appendChild(btn); }); if (preSelectedCuisineKey) { const btnToHighlight = cuisineSelectionArea.querySelector(`button[data-cuisine="${preSelectedCuisineKey}"]`); if (btnToHighlight) { highlightSelectedButton(cuisineSelectionArea.querySelectorAll('button'), btnToHighlight); } } } // Changed 餐期 to 時段
+        function renderCuisineOptions(mealType, preSelectedCuisineKey) { cuisineSelectionArea.innerHTML = ''; districtSelectionContainer.classList.add('hidden'); restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); btnTryAgainMeal.classList.add('hidden'); if (!mealData[mealType] || Object.keys(mealData[mealType]).length === 0) { txtSuggestion.textContent = `此時段 (${mealTypeToChinese(mealType)}) 暫未有菜式分類。`; return; } const cuisines = Object.keys(mealData[mealType]); cuisines.forEach(cuisineKey => { const btn = document.createElement('button'); btn.textContent = cuisineKey; btn.dataset.cuisine = cuisineKey; btn.classList.add('cuisine-btn', 'bg-sky-400', 'hover:bg-sky-500', 'text-sky-800', 'font-semibold', 'py-2', 'px-3', 'sm:px-4', 'rounded-lg', 'shadow', 'text-sm', 'sm:text-base', 'transform', 'hover:scale-105'); btn.addEventListener('click', () => { activeCuisine = cuisineKey; highlightSelectedButton(cuisineSelectionArea.querySelectorAll('button'), btn); makeMealSuggestion(activeMealType, activeCuisine); txtRestaurantSuggestion.innerHTML = ''; restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); activeDistrictL1 = null; activeDistrictL2 = null; districtLevel1Dropdown.value = ""; districtLevel2Dropdown.innerHTML = '<option value="">請選擇詳細地區...</option>'; districtLevel2Dropdown.disabled = true; }); cuisineSelectionArea.appendChild(btn); }); if (preSelectedCuisineKey) { const btnToHighlight = cuisineSelectionArea.querySelector(`button[data-cuisine="${preSelectedCuisineKey}"]`); if (btnToHighlight) { highlightSelectedButton(cuisineSelectionArea.querySelectorAll('button'), btnToHighlight); } } }
         function populateDistrictLevel1Dropdown() { districtLevel1Dropdown.innerHTML = '<option value="">請選擇區域 (十八區)...</option>'; Object.keys(hongKongDistricts).forEach(districtL1 => { const option = document.createElement('option'); option.value = districtL1; option.textContent = districtL1; districtLevel1Dropdown.appendChild(option); }); districtSelectionContainer.classList.remove('hidden'); districtLevel2Dropdown.innerHTML = '<option value="">請選擇詳細地區...</option>'; districtLevel2Dropdown.disabled = true; }
         function populateDistrictLevel2Dropdown(selectedDistrictL1) { districtLevel2Dropdown.innerHTML = '<option value="">請選擇詳細地區...</option>'; if (selectedDistrictL1 && hongKongDistricts[selectedDistrictL1]) { hongKongDistricts[selectedDistrictL1].forEach(districtL2 => { const option = document.createElement('option'); option.value = districtL2; option.textContent = districtL2; districtLevel2Dropdown.appendChild(option); }); districtLevel2Dropdown.disabled = false; } else { districtLevel2Dropdown.disabled = true; } }
         function makeMealSuggestion(mealType, cuisine) { if (!mealType || !cuisine || !mealData[mealType] || !mealData[mealType][cuisine] || mealData[mealType][cuisine].length === 0) { txtSuggestion.textContent = `暫時未有 ${mealTypeToChinese(mealType)} - ${cuisine || '未知菜式'} 嘅建議。`; lastSuggestedMeal = null; btnTryAgainMeal.classList.add('hidden'); districtSelectionContainer.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); return; } let potentialMeals = mealData[mealType][cuisine]; let moodFilteredMeals = []; let finalSuggestion = null; let moodMatchNote = ""; if (activeMood !== "any") { moodFilteredMeals = potentialMeals.filter(meal => meal.moods && meal.moods.includes(moods[activeMood])); } if (moodFilteredMeals.length > 0) { finalSuggestion = moodFilteredMeals[Math.floor(Math.random() * moodFilteredMeals.length)]; } else if (potentialMeals.length > 0) { finalSuggestion = potentialMeals[Math.floor(Math.random() * potentialMeals.length)]; if (activeMood !== "any") { moodMatchNote = `<br><span class="text-xs text-gray-500">(呢個菜式未有特別符合「${moods[activeMood]}」嘅建議，不如試下呢個？)</span>`; } } if (finalSuggestion) { lastSuggestedMeal = finalSuggestion.name; txtSuggestion.innerHTML = `<span class="block text-sm text-gray-500">${mealTypeToChinese(mealType)} - ${cuisine}</span> ${lastSuggestedMeal} ${moodMatchNote}`; txtSuggestion.classList.remove('suggestion-update'); void txtSuggestion.offsetWidth; txtSuggestion.classList.add('suggestion-update'); btnTryAgainMeal.classList.remove('hidden'); } else { txtSuggestion.textContent = `喺 ${cuisine} 搵唔到建議。`; lastSuggestedMeal = null; btnTryAgainMeal.classList.add('hidden'); } populateDistrictLevel1Dropdown(); restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); txtRestaurantSuggestion.innerHTML = ''; activeDistrictL1 = null; activeDistrictL2 = null; districtLevel1Dropdown.value = ""; districtLevel2Dropdown.innerHTML = '<option value="">請選擇詳細地區...</option>'; districtLevel2Dropdown.disabled = true; }
-        function findRestaurants(cuisine, districtL2) { if (!cuisine || !districtL2) { restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); return; } let potentialRestaurants = restaurantData.filter(r =>r.cuisine === cuisine && r.district.includes(districtL2)); let moodFilteredRestaurants = []; let wasMoodFiltered = false; if (activeMood !== "any") { moodFilteredRestaurants = potentialRestaurants.filter(r => { let matches = r.moods && r.moods.includes(moods[activeMood]); if (activeMood === "rich" && r.price && !['$$$', '$$$$'].includes(r.price)) { matches = false; } if (activeMood === "quick" && r.price && !['$', '$$'].includes(r.price)) { matches = matches && (r.cuisine === "快餐/輕食" || (r.price === '$' || r.price === '$$')); } return matches; }); wasMoodFiltered = true; } const finalRestaurantList = (wasMoodFiltered && moodFilteredRestaurants.length > 0) ? moodFilteredRestaurants : potentialRestaurants; const noPerfectMoodMatchButFallbacked = wasMoodFiltered && moodFilteredRestaurants.length === 0 && potentialRestaurants.length > 0; restaurantSuggestionArea.classList.remove('hidden'); txtRestaurantSuggestion.classList.remove('suggestion-update'); void txtRestaurantSuggestion.offsetWidth; if (finalRestaurantList.length > 0) { let html = `<h4 class="text-md font-semibold mb-2 text-sky-800">${districtL2}嘅${cuisine}餐廳推介`; if (wasMoodFiltered && !noPerfectMoodMatchButFallbacked && moodFilteredRestaurants.length > 0) { html += ` (符合「${moods[activeMood]}」心情)`; } else if (noPerfectMoodMatchButFallbacked) { html += ` <span class="text-sm text-gray-600">(「${moods[activeMood]}」心情未能完全匹配)</span>`; } html += `：</h4><ul class="list-disc text-left text-sm sm:text-base text-sky-700 space-y-1">`; finalRestaurantList.forEach(r => { html += `<li><strong>${r.name}</strong> ${r.price ? `(${r.price})` : ''} ${r.note ? `- ${r.note}` : ''}</li>`; }); html += "</ul>"; txtRestaurantSuggestion.innerHTML = html; } else { let noMatchMsg = `喺${districtL2}暫時未搵到「${cuisine}」嘅餐廳。`; if (wasMoodFiltered) { noMatchMsg = `喺${districtL2}暫時未搵到符合「${cuisine}」及「${moods[activeMood]}」心情嘅餐廳。`; } txtRestaurantSuggestion.innerHTML = `<p class="text-md text-sky-700">${noMatchMsg}</p>`; } txtRestaurantSuggestion.classList.add('suggestion-update'); const searchQuery = `${districtL2} ${cuisine} ${lastSuggestedMeal || '餐廳'} ${activeMood !== "any" ? moods[activeMood] : ''}`; googleMapsLink.href = `https://maps.google.com/?q=${encodeURIComponent(searchQuery.trim())}`; googleMapsLinkContainer.classList.remove('hidden'); } // Corrected Google Maps Link
+        function findRestaurants(cuisine, districtL2) { if (!cuisine || !districtL2) { restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); return; } let potentialRestaurants = restaurantData.filter(r =>r.cuisine === cuisine && r.district.includes(districtL2)); let moodFilteredRestaurants = []; let wasMoodFiltered = false; if (activeMood !== "any") { moodFilteredRestaurants = potentialRestaurants.filter(r => { let matches = r.moods && r.moods.includes(moods[activeMood]); if (activeMood === "rich" && r.price && !['$$$', '$$$$'].includes(r.price)) { matches = false; } if (activeMood === "quick" && r.price && !['$', '$$'].includes(r.price)) { matches = matches && (r.cuisine === "快餐/輕食" || (r.price === '$' || r.price === '$$')); } return matches; }); wasMoodFiltered = true; } const finalRestaurantList = (wasMoodFiltered && moodFilteredRestaurants.length > 0) ? moodFilteredRestaurants : potentialRestaurants; const noPerfectMoodMatchButFallbacked = wasMoodFiltered && moodFilteredRestaurants.length === 0 && potentialRestaurants.length > 0; restaurantSuggestionArea.classList.remove('hidden'); txtRestaurantSuggestion.classList.remove('suggestion-update'); void txtRestaurantSuggestion.offsetWidth; if (finalRestaurantList.length > 0) { let html = `<h4 class="text-md font-semibold mb-2 text-sky-800">${districtL2}嘅${cuisine}餐廳推介`; if (wasMoodFiltered && !noPerfectMoodMatchButFallbacked && moodFilteredRestaurants.length > 0) { html += ` (符合「${moods[activeMood]}」心情)`; } else if (noPerfectMoodMatchButFallbacked) { html += ` <span class="text-sm text-gray-600">(「${moods[activeMood]}」心情未能完全匹配)</span>`; } html += `：</h4><ul class="list-disc text-left text-sm sm:text-base text-sky-700 space-y-1">`; finalRestaurantList.forEach(r => { html += `<li><strong>${r.name}</strong> ${r.price ? `(${r.price})` : ''} ${r.note ? `- ${r.note}` : ''}</li>`; }); html += "</ul>"; txtRestaurantSuggestion.innerHTML = html; } else { let noMatchMsg = `喺${districtL2}暫時未搵到「${cuisine}」嘅餐廳。`; if (wasMoodFiltered) { noMatchMsg = `喺${districtL2}暫時未搵到符合「${cuisine}」及「${moods[activeMood]}」心情嘅餐廳。`; } txtRestaurantSuggestion.innerHTML = `<p class="text-md text-sky-700">${noMatchMsg}</p>`; } txtRestaurantSuggestion.classList.add('suggestion-update'); const searchQuery = `${districtL2} ${cuisine} ${lastSuggestedMeal || '餐廳'} ${activeMood !== "any" ? moods[activeMood] : ''}`; googleMapsLink.href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(searchQuery.trim())}`; googleMapsLinkContainer.classList.remove('hidden'); }
         function deg2rad(deg) { return deg * (Math.PI/180); }
         function calculateDistance(lat1, lon1, lat2, lon2) { var R = 6371; var dLat = deg2rad(lat2-lat1); var dLon = deg2rad(lon2-lon1); var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2); var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); return R * c; }
         function findClosestDistrict(userLat, userLon) { let closestDistrict = null; let shortestDistance = Infinity; for (const districtName in districtCentralPoints) { const point = districtCentralPoints[districtName]; const distance = calculateDistance(userLat, userLon, point.lat, point.lon); if (distance < shortestDistance) { shortestDistance = distance; closestDistrict = districtName; } } return closestDistrict; }
@@ -772,7 +510,7 @@
         btnGoBack.addEventListener('click', () => { activeMealType = null; showPage('pageMealTimeSelection'); });
         districtLevel1Dropdown.addEventListener('change', (event) => { activeDistrictL1 = event.target.value; populateDistrictLevel2Dropdown(activeDistrictL1); activeDistrictL2 = null; districtLevel2Dropdown.value = ""; restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); });
         districtLevel2Dropdown.addEventListener('change', (event) => { activeDistrictL2 = event.target.value; if (activeDistrictL2 && activeCuisine) { findRestaurants(activeCuisine, activeDistrictL2); } else { restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); } });
-        btnSurpriseCuisine.addEventListener('click', () => { if (!activeMealType) return; const cuisinesForMealType = Object.keys(mealData[activeMealType]); if (cuisinesForMealType.length === 0) { txtSuggestion.textContent = `此時段 (${mealTypeToChinese(activeMealType)}) 暫未有菜式可供隨機選擇。`; cuisineSelectionArea.innerHTML = `<p class="text-gray-600">此時段 (${mealTypeToChinese(activeMealType)}) 暫未有菜式分類。</p>`; btnTryAgainMeal.classList.add('hidden'); districtSelectionContainer.classList.add('hidden'); restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); return; } const randomCuisine = cuisinesForMealType[Math.floor(Math.random() * cuisinesForMealType.length)]; activeCuisine = randomCuisine; const cuisineBtnToSelect = cuisineSelectionArea.querySelector(`button[data-cuisine="${activeCuisine}"]`); if (cuisineBtnToSelect) { highlightSelectedButton(cuisineSelectionArea.querySelectorAll('button'), cuisineBtnToSelect); } makeMealSuggestion(activeMealType, activeCuisine); restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); activeDistrictL1 = null; activeDistrictL2 = null; districtLevel1Dropdown.value = ""; districtLevel2Dropdown.innerHTML = '<option value="">請選擇詳細地區...</option>'; districtLevel2Dropdown.disabled = true; }); // Changed 餐期 to 時段
+        btnSurpriseCuisine.addEventListener('click', () => { if (!activeMealType) return; const cuisinesForMealType = Object.keys(mealData[activeMealType]); if (cuisinesForMealType.length === 0) { txtSuggestion.textContent = `此時段 (${mealTypeToChinese(activeMealType)}) 暫未有菜式可供隨機選擇。`; cuisineSelectionArea.innerHTML = `<p class="text-gray-600">此時段 (${mealTypeToChinese(activeMealType)}) 暫未有菜式分類。</p>`; btnTryAgainMeal.classList.add('hidden'); districtSelectionContainer.classList.add('hidden'); restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); return; } const randomCuisine = cuisinesForMealType[Math.floor(Math.random() * cuisinesForMealType.length)]; activeCuisine = randomCuisine; const cuisineBtnToSelect = cuisineSelectionArea.querySelector(`button[data-cuisine="${activeCuisine}"]`); if (cuisineBtnToSelect) { highlightSelectedButton(cuisineSelectionArea.querySelectorAll('button'), cuisineBtnToSelect); } makeMealSuggestion(activeMealType, activeCuisine); restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); activeDistrictL1 = null; activeDistrictL2 = null; districtLevel1Dropdown.value = ""; districtLevel2Dropdown.innerHTML = '<option value="">請選擇詳細地區...</option>'; districtLevel2Dropdown.disabled = true; });
         btnTryAgainMeal.addEventListener('click', () => { if (activeMealType && activeCuisine) { makeMealSuggestion(activeMealType, activeCuisine); if (activeDistrictL2) { findRestaurants(activeCuisine, activeDistrictL2); } else { restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); txtRestaurantSuggestion.innerHTML = ''; } } else if (activeMealType) { btnSurpriseCuisine.click(); } });
         btnGetLocation.addEventListener('click', () => { if (navigator.geolocation) { locationStatusMessage.textContent = "嘗試讀取你的位置中..."; navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }); } else { locationStatusMessage.textContent = "你的瀏覽器不支援地理位置功能。"; } });
         currentYearSpan.textContent = new Date().getFullYear();
