@@ -80,6 +80,9 @@
 <body class="bg-gradient-to-br from-lime-100 to-green-200 min-h-screen flex flex-col items-center justify-center p-4 selection:bg-green-500 selection:text-white">
 
     <div class="bg-white p-6 sm:p-8 rounded-xl shadow-2xl w-full max-w-3xl text-center">
+        <div id="dataLoadError" class="hidden text-red-500 text-center font-bold p-4 mb-4 bg-red-100 border border-red-400 rounded">
+            錯誤：無法載入餐廳資料，部分功能可能無法使用。請檢查瀏覽器控制台獲取更多資訊。
+        </div>
 
         <div id="pageMealTimeSelection">
             <header class="mb-6 sm:mb-8">
@@ -191,6 +194,17 @@
         const btnSurpriseCuisine = document.getElementById('btnSurpriseCuisine');
         const btnTryAgainMeal = document.getElementById('btnTryAgainMeal');
         const currentYearSpan = document.getElementById('currentYear');
+        const dataLoadErrorDiv = document.getElementById('dataLoadError');
+
+        // Check if restaurantData is loaded and provide feedback
+        if (typeof restaurantData === 'undefined') {
+            console.error("錯誤：restaurant_data.js 未能成功載入或 restaurantData 未定義。請檢查檔案路徑及內容。");
+            if (dataLoadErrorDiv) {
+                dataLoadErrorDiv.classList.remove('hidden');
+            }
+        } else {
+            console.log("restaurantData 成功載入。");
+        }
 
         // --- Expanded Meal Data with Moods (Restored) ---
         const mealData = {
@@ -209,7 +223,7 @@
                 "韓式": [ { name: "韓式拌飯 (Bibimbap)", moods: ["健康清淡啲～"] }, { name: "泡菜炒飯", moods: ["Comfort Food"] }, { name: "韓式炸醬麵", moods: ["Comfort Food"] }, { name: "豆腐海鮮湯配飯", moods: ["健康清淡啲～", "Comfort Food"] }, { name: "韓式炸雞", moods: ["Comfort Food", "想食豪啲！"] }, { name: "部隊鍋", moods: ["Comfort Food"] }, { name: "紫菜包飯 (Kimbap)", moods: ["快靓正", "健康清淡啲～"] }, { name: "人參雞湯", moods: ["健康清淡啲～", "Comfort Food"] }, { name: "韓式炒粉絲 (Japchae)", moods: ["健康清淡啲～"] }, { name: "辣炒年糕 (Tteokbokki)", moods: ["Comfort Food"] }, { name: "韓式冷麵 (Naengmyeon)", moods: ["健康清淡啲～"] }, { name: "石頭鍋飯 (Dolsot Bibimbap)", moods: ["Comfort Food"] }, { name: "韓式豬肉蓋飯 (Jeyuk Deopbap)", moods: ["Comfort Food"] } ],
                 "西式": [ { name: "意粉 (肉醬/白汁/香草)", moods: ["Comfort Food"] }, { name: "薄餅 (Pizza)", moods: ["Comfort Food", "想食豪啲！"] }, { name: "公司三文治配薯條", moods: ["快靚正", "Comfort Food"] }, { name: "西式沙律配雞扒/三文魚", moods: ["健康清淡啲～"] }, { name: "漢堡包餐", moods: ["快靚正", "Comfort Food"] }, { name: "焗薯配料", moods: ["Comfort Food"] }, { name: "西式湯配麵包", moods: ["健康清淡啲～"] }, { name: "烤雞/雞扒餐", moods: ["Comfort Food"] }, { name: "魚柳包配薯條", moods: ["快靚正"] }, { name: "意式肉丸意粉", moods: ["Comfort Food"] }, { name: "卡邦尼意粉", moods: ["Comfort Food", "想食豪啲！"] }, { name: "烤三文魚配雜菜", moods: ["健康清淡啲～", "想食豪啲！"] }, { name: "肉醬千層麵", moods: ["Comfort Food", "想食豪啲！"] } ],
                 "東南亞": [ { name: "泰式豬頸肉飯", moods: ["Comfort Food"] }, { name: "青咖喱雞飯", moods: ["Comfort Food"] }, { name: "冬蔭功金邊粉", moods: [] }, { name: "海南雞飯", moods: ["Comfort Food", "健康清淡啲～"] }, { name: "越南生牛肉河 (Pho)", moods: ["健康清淡啲～", "Comfort Food"] }, { name: "扎肉撈檬", moods: ["健康清淡啲～"] }, { name: "喇沙 (Laksa)", moods: ["Comfort Food"] }, { name: "肉骨茶", moods: ["Comfort Food"] }, { name: "泰式炒河 (Pad See Ew)", moods: ["Comfort Food"] }, { name: "印尼炒飯 (Nasi Goreng)", moods: ["Comfort Food"] }, { name: "泰式船麵", moods: ["Comfort Food"] }, { name: "越南法式三文治 (Banh Mi)", moods: ["快靚正"] }, { name: "星洲炒蘿蔔糕", moods: ["Comfort Food"] }, { name: "泰式菠蘿炒飯", moods: ["Comfort Food"] }, { name: "馬來西亞椰漿飯 (Nasi Lemak)", moods: ["Comfort Food"] } ],
-                "快餐/輕食": [ { name: "連鎖快餐套餐", moods: ["快靚正"] }, { name: "Subway潛艇堡", moods: ["快靚正", "健康清淡啲～"] }, { name: "便利店飯盒/意粉", moods: ["快靚正"] }, { name: "沙律杯", moods: ["健康清淡啲～", "快靚正"] }, { name: "杯麵", moods: ["快靚正", "Comfort Food"] }, { name: "烤雞卷餅 (Wrap)", moods: ["快靚正", "健康清淡啲～"] }, { name: "意式薄餅 (單片)", moods: ["快靚正"] }, { name: "熱狗", moods: ["快靚正", "Comfort Food"] }, { name: "墨西哥夾餅 (Quesadilla)", moods: ["快靚正", "Comfort Food"] }, { name: "即食湯包配麵包", moods: ["快靚正", "健康清淡啲～"] } ],
+                "快餐/輕食": [ { name: "連鎖快餐套餐", moods: ["快靓正"] }, { name: "Subway潛艇堡", moods: ["快靚正", "健康清淡啲～"] }, { name: "便利店飯盒/意粉", moods: ["快靚正"] }, { name: "沙律杯", moods: ["健康清淡啲～", "快靚正"] }, { name: "杯麵", moods: ["快靚正", "Comfort Food"] }, { name: "烤雞卷餅 (Wrap)", moods: ["快靚正", "健康清淡啲～"] }, { name: "意式薄餅 (單片)", moods: ["快靚正"] }, { name: "熱狗", moods: ["快靚正", "Comfort Food"] }, { name: "墨西哥夾餅 (Quesadilla)", moods: ["快靚正", "Comfort Food"] }, { name: "即食湯包配麵包", moods: ["快靚正", "健康清淡啲～"] } ],
                 "其他": [ { name: "印度咖喱配薄餅 (Naan)", moods: ["Comfort Food"] }, { name: "土耳其烤肉卷 (Kebab)", moods: ["快靚正"] }, { name: "墨西哥卷餅 (Burrito)", moods: ["Comfort Food"] }, { name: "中東旋轉烤肉 (Shawarma)", moods: ["快靚正"] }, { name: "希臘沙律 (Greek Salad)", moods: ["健康清淡啲～"] }, { name: "Poke Bowl (夏威夷魚生飯)", moods: ["健康清淡啲～"] }, { name: "俄羅斯餃子 (Pelmeni)", moods: ["Comfort Food"] }, { name: "西班牙小食 (Tapas)", moods: ["想食豪啲！"] } ]
             },
             afternoonTea: {
@@ -367,7 +381,58 @@
                 txtRestaurantSuggestion.innerHTML = '';
             }
         }
-        function findRestaurants(cuisine, districtL2) { if (!cuisine || !districtL2) { restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); return; } let potentialRestaurants = restaurantData.filter(r =>r.cuisine === cuisine && r.district.includes(districtL2)); let moodFilteredRestaurants = []; let wasMoodFiltered = false; if (activeMood !== "any") { moodFilteredRestaurants = potentialRestaurants.filter(r => { let matches = r.moods && r.moods.includes(moods[activeMood]); if (activeMood === "rich" && r.price && !['$$$', '$$$$'].includes(r.price)) { matches = false; } if (activeMood === "quick" && r.price && !['$', '$$'].includes(r.price)) { matches = matches && (r.cuisine === "快餐/輕食" || (r.price === '$' || r.price === '$$')); } return matches; }); wasMoodFiltered = true; } const finalRestaurantList = (wasMoodFiltered && moodFilteredRestaurants.length > 0) ? moodFilteredRestaurants : potentialRestaurants; const noPerfectMoodMatchButFallbacked = wasMoodFiltered && moodFilteredRestaurants.length === 0 && potentialRestaurants.length > 0; restaurantSuggestionArea.classList.remove('hidden'); txtRestaurantSuggestion.classList.remove('suggestion-update'); void txtRestaurantSuggestion.offsetWidth; if (finalRestaurantList.length > 0) { let html = `<h4 class="text-md font-semibold mb-2 text-sky-800">${districtL2}嘅${cuisine}餐廳推介`; if (wasMoodFiltered && !noPerfectMoodMatchButFallbacked && moodFilteredRestaurants.length > 0) { html += ` (符合「${moods[activeMood]}」心情)`; } else if (noPerfectMoodMatchButFallbacked) { html += ` <span class="text-sm text-gray-600">(「${moods[activeMood]}」心情未能完全匹配)</span>`; } html += `：</h4><ul class="list-disc text-left text-sm sm:text-base text-sky-700 space-y-1">`; finalRestaurantList.forEach(r => { const restaurantSearchQuery = `${districtL2} ${r.name}`; html += `<li><a href="https://www.google.com/search?q=${encodeURIComponent(restaurantSearchQuery)}" target="_blank" class="restaurant-link">${r.name}</a> ${r.price ? `(${r.price})` : ''} ${r.note ? `- ${r.note}` : ''}</li>`; }); html += "</ul>"; txtRestaurantSuggestion.innerHTML = html; } else { let noMatchMsg = `喺${districtL2}暫時未搵到「${cuisine}」嘅餐廳。`; if (wasMoodFiltered) { noMatchMsg = `喺${districtL2}暫時未搵到符合「${cuisine}」及「${moods[activeMood]}」心情嘅餐廳。`; } txtRestaurantSuggestion.innerHTML = `<p class="text-md text-sky-700">${noMatchMsg}</p>`; } txtRestaurantSuggestion.classList.add('suggestion-update'); const searchQuery = `${districtL2} ${cuisine} ${lastSuggestedMeal || '餐廳'} ${activeMood !== "any" ? moods[activeMood] : ''}`; googleMapsLink.href = `https://www.google.com/search?q=${encodeURIComponent(searchQuery.trim())}`; googleMapsLinkContainer.classList.remove('hidden'); }
+        function findRestaurants(cuisine, districtL2) {
+            if (typeof restaurantData === 'undefined') { // Check if restaurantData is loaded
+                console.error("findRestaurants 錯誤: restaurantData 未定義。");
+                txtRestaurantSuggestion.innerHTML = '<p class="text-red-500">無法載入餐廳資料，請稍後再試。</p>';
+                restaurantSuggestionArea.classList.remove('hidden');
+                googleMapsLinkContainer.classList.add('hidden');
+                return;
+            }
+            if (!cuisine || !districtL2) { restaurantSuggestionArea.classList.add('hidden'); googleMapsLinkContainer.classList.add('hidden'); return; }
+            let potentialRestaurants = restaurantData.filter(r =>r.cuisine === cuisine && r.district.includes(districtL2));
+            let moodFilteredRestaurants = [];
+            let wasMoodFiltered = false;
+            if (activeMood !== "any") {
+                moodFilteredRestaurants = potentialRestaurants.filter(r => {
+                    let matches = r.moods && r.moods.includes(moods[activeMood]);
+                    if (activeMood === "rich" && r.price && !['$$$', '$$$$'].includes(r.price)) { matches = false; }
+                    if (activeMood === "quick" && r.price && !['$', '$$'].includes(r.price)) { matches = matches && (r.cuisine === "快餐/輕食" || (r.price === '$' || r.price === '$$')); }
+                    return matches;
+                });
+                wasMoodFiltered = true;
+            }
+            const finalRestaurantList = (wasMoodFiltered && moodFilteredRestaurants.length > 0) ? moodFilteredRestaurants : potentialRestaurants;
+            const noPerfectMoodMatchButFallbacked = wasMoodFiltered && moodFilteredRestaurants.length === 0 && potentialRestaurants.length > 0;
+            restaurantSuggestionArea.classList.remove('hidden');
+            txtRestaurantSuggestion.classList.remove('suggestion-update');
+            void txtRestaurantSuggestion.offsetWidth;
+            if (finalRestaurantList.length > 0) {
+                let html = `<h4 class="text-md font-semibold mb-2 text-sky-800">${districtL2}嘅${cuisine}餐廳推介`;
+                if (wasMoodFiltered && !noPerfectMoodMatchButFallbacked && moodFilteredRestaurants.length > 0) {
+                    html += ` (符合「${moods[activeMood]}」心情)`;
+                } else if (noPerfectMoodMatchButFallbacked) {
+                    html += ` <span class="text-sm text-gray-600">(「${moods[activeMood]}」心情未能完全匹配)</span>`;
+                }
+                html += `：</h4><ul class="list-disc text-left text-sm sm:text-base text-sky-700 space-y-1">`;
+                finalRestaurantList.forEach(r => {
+                    const restaurantSearchQuery = `${districtL2} ${r.name}`;
+                    html += `<li><a href="https://www.google.com/search?q=${encodeURIComponent(restaurantSearchQuery)}" target="_blank" class="restaurant-link">${r.name}</a> ${r.price ? `(${r.price})` : ''} ${r.note ? `- ${r.note}` : ''}</li>`;
+                });
+                html += "</ul>";
+                txtRestaurantSuggestion.innerHTML = html;
+            } else {
+                let noMatchMsg = `喺${districtL2}暫時未搵到「${cuisine}」嘅餐廳。`;
+                if (wasMoodFiltered) {
+                    noMatchMsg = `喺${districtL2}暫時未搵到符合「${cuisine}」及「${moods[activeMood]}」心情嘅餐廳。`;
+                }
+                txtRestaurantSuggestion.innerHTML = `<p class="text-md text-sky-700">${noMatchMsg}</p>`;
+            }
+            txtRestaurantSuggestion.classList.add('suggestion-update');
+            const searchQuery = `${districtL2} ${cuisine} ${lastSuggestedMeal || '餐廳'} ${activeMood !== "any" ? moods[activeMood] : ''}`;
+            googleMapsLink.href = `https://www.google.com/search?q=${encodeURIComponent(searchQuery.trim())}`;
+            googleMapsLinkContainer.classList.remove('hidden');
+        }
         function deg2rad(deg) { return deg * (Math.PI/180); }
         function calculateDistance(lat1, lon1, lat2, lon2) { var R = 6371; var dLat = deg2rad(lat2-lat1); var dLon = deg2rad(lon2-lon1); var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2); var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); return R * c; }
         function findClosestDistrict(userLat, userLon) { let closestDistrict = null; let shortestDistance = Infinity; for (const districtName in districtCentralPoints) { const point = districtCentralPoints[districtName]; const distance = calculateDistance(userLat, userLon, point.lat, point.lon); if (distance < shortestDistance) { shortestDistance = distance; closestDistrict = districtName; } } return closestDistrict; }
