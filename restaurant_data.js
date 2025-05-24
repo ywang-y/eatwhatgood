@@ -175,4 +175,31 @@ const restaurantData = [
     { name: "Ruam", cuisine: "東南亞", district: ["灣仔"], note: "泰國酒吧餐廳", moods: ["Comfort Food"], price: "$$$" },
     { name: "Sip Song", cuisine: "東南亞", district: ["淺水灣"], note: "泰國海邊餐廳", moods: ["Comfort Food", "想食豪啲！"], price: "$$$" },
     { name: "Cococabana", cuisine: "東南亞", district: ["深水灣"], note: "地中海/亞洲Fusion (但有時被歸類東南亞風情)", moods: ["想食豪啲！"], price: "$$$$" },
-    { name: "Aaharn", cuisine: 
+    { name: "Aaharn", cuisine: "東南亞", district: ["中環"], note: "高級泰國菜 (David Thompson)", moods: ["想食豪啲！"], price: "$$$$" },
+    { name: "Mekong Vietnamese Restaurant", cuisine: "東南亞", district: ["愉景灣"], note: "越南菜", moods: ["Comfort Food"], price: "$$" },
+    { name: "Papparich", cuisine: "東南亞", district: ["銅鑼灣", "將軍澳"], note: "馬來西亞連鎖餐廳", moods: ["Comfort Food", "快靚正"], price: "$$" },
+    { name: "小曼谷泰國菜館", cuisine: "東南亞", district: ["九龍城"], note: "人氣泰國菜", moods: ["Comfort Food"], price: "$$" },
+    { name: "越男仔", cuisine: "東南亞", district: ["旺角", "銅鑼灣"], note: "越南湯粉", moods: ["Comfort Food", "快靚正"], price: "$" },
+
+    // 快餐/輕食 (Continued)
+    { name: "Triple O's by White Spot", cuisine: "快餐/輕食", district: ["金鐘", "中環"], note: "加拿大漢堡, 奶昔", moods: ["Comfort Food", "快靚正"], price: "$$" },
+    { name: "Pret A Manger", cuisine: "快餐/輕食", district: ["多區"], note: "三文治, 沙律", moods: ["快靚正", "健康清淡啲～"], price: "$$" },
+    { name: "BEP Express", cuisine: "快餐/輕食", district: ["中環"], note: "越南快餐, 撈檬", moods: ["快靚正", "健康清淡啲～"], price: "$" },
+    { name: "KALE", cuisine: "快餐/輕食", district: ["中環", "灣仔"], note: "健康沙律, 卷餅", moods: ["健康清淡啲～", "快靚正"], price: "$$" },
+
+    // 其他特色 (Continued)
+    { name: "The Pontiac", cuisine: "其他特色", district: ["中環"], note: "美式酒吧, 雞尾酒", moods: ["Comfort Food"], price: "$$$" },
+    { name: "Shady Acres", cuisine: "其他特色", district: ["中環"], note: "葡萄酒吧, 小食", moods: ["Comfort Food"], price: "$$$" },
+    { name: "Honbo", cuisine: "其他特色", district: ["灣仔", "中環"], note: "美式漢堡", moods: ["Comfort Food"], price: "$$" },
+    { name: "Teakha 茶。家", cuisine: "其他特色", district: ["上環"], note: "茶館, 輕食, 蛋糕", moods: ["健康清淡啲～", "Comfort Food"], price: "$$" },
+    { name: "The Old Man", cuisine: "其他特色", district: ["中環"], note: "亞洲最佳酒吧之一 (海明威主題)", moods: ["想食豪啲！"], price: "$$$" },
+    { name: "COBO House", cuisine: "其他特色", district: ["尖沙咀"], note: "藝術 X 餐飲, 亞洲菜", moods: ["想食豪啲！"], price: "$$$$" },
+    { name: "Duddell's 都爹利會館", cuisine: "其他特色", district: ["中環"], note: "米芝蓮粵菜, 藝術空間", moods: ["想食豪啲！"], price: "$$$$" },
+    { name: "Little Creatures", cuisine: "其他特色", district: ["堅尼地城"], note: "澳洲手工啤酒廠, 西式小食", moods: ["Comfort Food"], price: "$$$" },
+    { name: "Second Draft", cuisine: "其他特色", district: ["大坑"], note: "本地手工啤酒, 亞洲風味小食", moods: ["Comfort Food"], price: "$$$" },
+    { name: "The Diplomat", cuisine: "其他特色", district: ["中環"], note: "雞尾酒吧, 小食", moods: ["想食豪啲！"], price: "$$$" },
+    { name: "Penicillin", cuisine: "其他特色", district: ["中環"], note: "環保概念酒吧, 小食", moods: ["想食豪啲！"], price: "$$$" },
+    { name: "Shari Shari Kakigori House 氷屋", cuisine: "其他特色", district: ["銅鑼灣", "中環"], note: "日式刨冰", moods: ["Comfort Food"], price: "$$" },
+    { name: "Elephant Grounds", cuisine: "其他特色", district: ["中環", "灣仔", "銅鑼灣", "尖沙咀"], note: "咖啡店, 雪糕三文治, 輕食", moods: ["Comfort Food", "健康清淡啲～"], price: "$$" },
+    { name: "NOC Coffee Co.", cuisine: "其他特色", district: ["中環", "西環", "灣仔", "多區"], note: "精品咖啡, 輕食", moods: ["健康清淡啲～", "快靚正"], price: "$$" }
+];
